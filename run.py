@@ -28,23 +28,29 @@ SHEET = GSPREAD_CLIENT.open('workout-log')
 # Start of Terminal process
 print("Welcome to your workout log\n")
 
+users_name = []
+
+
 def get_users_name():
     user_input = input("Please enter your First and Last name..\n")
-    username = []
-    username.append(user_input)
+    users_name.append(user_input)
+    return users_name
 
+
+def validate_username(user):
     all_names = SHEET.worksheet('names')
     names_list = all_names.get_all_values()
     for name in names_list:
-        if name == username:
+        if name == user:
             print("Located your profile!")
             exit()
-    all_names.append_row(username)
+    all_names.append_row(user)
     print("*New profile created*")
 
 
 def main():
     get_users_name()
+    validate_username(users_name)
 
 
 main()
