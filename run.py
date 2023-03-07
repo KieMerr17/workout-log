@@ -14,19 +14,37 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('workout-log')
 
 # Get all sheet information from Google Sheets
-names = SHEET.worksheet('names')
-name_sheet = names.get_all_values()
 
-exercises = SHEET.worksheet('exercises')
-exercise_sheet = exercises.get_all_values()
 
-results = SHEET.worksheet('results')
-results_sheet = results.get_all_values()
+# exercises = SHEET.worksheet('exercises')
+# exercise_sheet = exercises.get_all_values()
 
-workouts = SHEET.worksheet('workouts')
-workouts_sheet = workouts.get_all_values()
+# results = SHEET.worksheet('results')
+# results_sheet = results.get_all_values()
 
-pprint(name_sheet)
-pprint(exercise_sheet)
-pprint(results_sheet)
-pprint(workouts_sheet)
+# workouts = SHEET.worksheet('workouts')
+# workouts_sheet = workouts.get_all_values()
+
+# Start of Terminal process
+print("Welcome to your workout log\n")
+
+def get_users_name():
+    user_input = input("Please enter your First and Last name..\n")
+    username = []
+    username.append(user_input)
+
+    all_names = SHEET.worksheet('names')
+    names_list = all_names.get_all_values()
+    for name in names_list:
+        if name == username:
+            print("Located your profile!")
+            exit()
+    all_names.append_row(username)
+    print("*New profile created*")
+
+
+def main():
+    get_users_name()
+
+
+main()
