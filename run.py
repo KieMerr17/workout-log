@@ -20,49 +20,59 @@ print("Welcome to your workout log\n")
 def get_users_name():
     """
     Function gets the First and Last name of the user.
+    Function checks it contains only a first and last name
+    and the input data has only letters.
     """
     while True:
-        user_input = input("Please enter your First and Last name..\n")
+        user_input = input("Please enter your First and Last name...\n")
         name_list = user_input.split()
         if len(name_list) == 2:
-        # Check that the input contains just a first and last name only
+            # Check that the input contains just a first and last name only
             if user_input.replace(" ", "").isalpha():
-            # Check that the input contains only letters after removing any spaces
+                # Check that the input contains only letters after removing
+                # any spaces
                 return user_input
             else:
                 print("Err: Please enter only letters.")
         else:
-            print("Err: too many names given.")
+            print("Err: Incorrect number of names given.")
 
 
 def get_users_age():
     """
     Function gets the age of the user.
+    The function checks that the input contains only numbers and that
+    the input age is between 16 - 100 years old.
     """
     while True:
-        user_input = input("Please enter your age.\n")
-        if user_input.replace(" ", "").isdigit():
-            # Check that the input contains only numbers after removing any spaces
-            return user_input
+        user_input = input("Please enter your age...\n")
+        user_input = user_input.replace(" ", "")
+        if user_input.isdigit():
+            # Check that the input contains only numbers
+            age = int(user_input)
+            if age >= 16 and age <= 100:
+                # Check that the input age is between 16 - 100
+                return age
+            else:
+                print("Err: Age must be between 16 - 100.")
         else:
             print("Err: Please enter only numbers.")
 
 
 def validate_user(user):
     """
-    Function checks to see if users inputted name is already on
+    Function checks to see if users input name is already on
     the spreadsheet.
     If NOT then it appends the name to the sheet.
     """
     all_names = SHEET.worksheet('profiles')
     names_list = all_names.col_values(1)
     if user in names_list:
-        print("Located your profile!")
+        print("Loading your profile...\n")
     else:
         user_age = get_users_age()
         all_names.append_row([user, user_age])
-
-        print("*New profile created*")
+        print("...New profile created...\n")
 
 
 def main():
