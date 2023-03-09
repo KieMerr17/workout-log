@@ -23,11 +23,16 @@ def get_users_name():
     """
     while True:
         user_input = input("Please enter your First and Last name..\n")
-        if user_input.replace(" ", "").isalpha():
+        name_list = user_input.split()
+        if len(name_list) == 2:
+        # Check that the input contains just a first and last name only
+            if user_input.replace(" ", "").isalpha():
             # Check that the input contains only letters after removing any spaces
-            return user_input
+                return user_input
+            else:
+                print("Err: Please enter only letters.")
         else:
-            print("Err: Please enter only letters.")
+            print("Err: too many names given.")
 
 
 def get_users_age():
