@@ -75,7 +75,7 @@ def validate_user(user):
     else:
         user_age = get_users_age()
         profiles_sheet.append_row([user, user_age])
-        log_sheet.append_row([user])
+        log_sheet.append_row([user] + [0]*14)
         print("...New profile created...\n")
 
 
