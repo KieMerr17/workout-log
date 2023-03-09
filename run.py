@@ -22,6 +22,7 @@ def get_users_name():
     Function gets the First and Last name of the user.
     Function checks it contains only a first and last name
     and the input data has only letters.
+    the input it titled to avoid multiple entries before returning.
     """
     while True:
         user_input = input("Please enter your First and Last name...\n")
@@ -31,7 +32,8 @@ def get_users_name():
             if user_input.replace(" ", "").isalpha():
                 # Check that the input contains only letters after removing
                 # any spaces
-                return user_input
+                titled_input = user_input.title()
+                return titled_input
             else:
                 print("Err: Please enter only letters.")
         else:
