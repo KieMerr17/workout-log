@@ -23,11 +23,11 @@ def initial_question():
     Ask the user what they would like to do
     """
     print("What would you like to do?")
-    choices = "1) Login/Register\n2) Workout\n"
+    choices = "1) Login/Register\n2) Workout\n3) Exit\n"
     choice_selected = input(choices)
     separate_line()
     # Check if input is 1 or 2
-    while choice_selected not in ("1", "2"):
+    while choice_selected not in ("1", "2", "3"):
         print("Please choose an option:")
         choice_selected = input(choices)
         separate_line()
@@ -39,6 +39,39 @@ def initial_question():
     if choice_selected == "2":
         print("Generating workout...")
         separate_line()
+
+    if choice_selected == "3":
+        print("SEE YOU AGAIN...")
+        exit()
+
+
+def user_menu():
+    """
+    Question if the user once validated
+    """
+    print("Welcome!!\n")
+    print("What would you like to do?")
+    choices = "1) Workout\n2) View Log\n3) Exit\n"
+    choice_selected = input(choices)
+    separate_line()
+    # Check if input is 1 or 2
+    while choice_selected not in ("1", "2", "3"):
+        print("Please choose an option:")
+        choice_selected = input(choices)
+        separate_line()
+
+    if choice_selected == "1":
+        print("Generating workout...")
+        separate_line()
+
+    if choice_selected == "2":
+        print("\nLoading your log...")
+        separate_line()
+        
+    
+    if choice_selected == "3":
+        print("SEE YOU AGAIN...")
+        exit()
 
 
 def get_users_name():
@@ -97,12 +130,14 @@ def validate_user(user):
     if user in profiles_names:
         print("\nLoading your profile...")
         separate_line()
+        user_menu()
     else:
         user_age = get_users_age()
         profiles_sheet.append_row([user, user_age])
         log_sheet.append_row([user] + [0]*14)
         print("\n>> New profile created <<")
         separate_line()
+        user_menu()
 
 
 def separate_line():
@@ -114,11 +149,4 @@ def separate_line():
     print(" ")
 
 
-def main():
-    """
-    Run all main functions
-    """
-    initial_question()
-    
-
-main()
+initial_question()
