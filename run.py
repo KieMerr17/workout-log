@@ -14,7 +14,31 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('workout-log')
 
 # Start of Terminal process
+
 print("Welcome to your workout log\n")
+
+
+def initial_question():
+    """
+    Ask the user what they would like to do
+    """
+    print("What would you like to do?")
+    choices = "1) Login/Register\n2) Workout\n"
+    choice_selected = input(choices)
+    separate_line()
+    # Check if input is 1 or 2
+    while choice_selected not in ("1", "2"):
+        print("Please choose an option:")
+        choice_selected = input(choices)
+        separate_line()
+
+    if choice_selected == "1":
+        user_name = get_users_name()
+        validate_user(user_name)
+
+    if choice_selected == "2":
+        print("Generating workout...")
+        separate_line()
 
 
 def get_users_name():
@@ -71,20 +95,30 @@ def validate_user(user):
     log_sheet = SHEET.worksheet('log')
     profiles_names = profiles_sheet.col_values(1)
     if user in profiles_names:
-        print("Loading your profile...\n")
+        print("\nLoading your profile...")
+        separate_line()
     else:
         user_age = get_users_age()
         profiles_sheet.append_row([user, user_age])
         log_sheet.append_row([user] + [0]*14)
-        print("...New profile created...\n")
+        print("\n>> New profile created <<")
+        separate_line()
+
+
+def separate_line():
+    """
+    Print '-' lines to separate messages
+    """
+    print(" ")
+    print("- "*20)
+    print(" ")
 
 
 def main():
     """
     Run all main functions
     """
-    user_name = get_users_name()
-    validate_user(user_name)
-
+    initial_question()
+    
 
 main()
