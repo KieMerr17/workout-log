@@ -61,6 +61,7 @@ def get_users_name():
                 # Check that the input contains only letters after removing
                 # any spaces
                 titled_input = user_input.title()
+                USERS_NAME.append(titled_input)
                 return titled_input
             else:
                 print("Err: Please enter only letters.")
@@ -124,28 +125,49 @@ def user_menu():
     """
     Question to the user once validated
     """
-    print("Welcome!!\n")
     print("What would you like to do?")
     choices = "1) Workout\n2) View Log\n3) Exit\n"
     choice_selected = input(choices)
-    separate_line()
     # Check if input is 1 or 2
     while choice_selected not in ("1", "2", "3"):
         print("Please choose an option:")
         choice_selected = input(choices)
-        separate_line()
 
     if choice_selected == "1":
-        print("Generating workout...")
+        print("\nGenerating workout...")
         separate_line()
 
     if choice_selected == "2":
         print("\nLoading your log...")
         separate_line()
+        view_user_log()
 
     if choice_selected == "3":
-        print("SEE YOU AGAIN...")
+        print("\nSEE YOU AGAIN...")
+        separate_line()
         exit()
 
 
+def view_user_log():
+    """
+    Generate current log history for the user logged in
+    """
+    name = "".join(USERS_NAME)  # convert USER_NAME to a string
+    log_sheet = SHEET.worksheet('log')
+    find_user = log_sheet.find(name, in_column=1)
+    users_row = find_user.row
+    users_log = log_sheet.row_values(users_row)  # current users log
+    exercise = log_sheet.row_values(1)  # list of the exercise headings
+
+    print(f"Workout Log for: {name}\n")
+    user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
+    # Create dictionary for exercise name and the users value
+
+    print("\n"'\n'.join([f"{key}: {value}" for key, value in user_data.items()]))
+    # Print Dictionary without '[]'
+    separate_line()
+    user_menu()
+
+
+USERS_NAME = []
 initial_question()
