@@ -163,7 +163,7 @@ def view_user_log():
     user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
     # Create dictionary for exercise name and the users value
 
-    print("\n"'\n'.join([f"{key}: {value}" for key, value in user_data.items()]))
+    print('\n'.join([f"{key}: {value}" for key, value in user_data.items()]))
     # Print Dictionary without '[]'
     separate_line()
     user_menu()
