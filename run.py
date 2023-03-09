@@ -77,13 +77,12 @@ def validate_user(user):
         print("...New profile created...\n")
 
 
-def profile_checker():
+def main():
+    """
+    Run all main functions
+    """
     user_name = get_users_name()
     validate_user(user_name)
-
-
-def main():
-    profile_checker()
 
 
 main()
