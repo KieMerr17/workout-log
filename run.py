@@ -45,35 +45,6 @@ def initial_question():
         exit()
 
 
-def user_menu():
-    """
-    Question if the user once validated
-    """
-    print("Welcome!!\n")
-    print("What would you like to do?")
-    choices = "1) Workout\n2) View Log\n3) Exit\n"
-    choice_selected = input(choices)
-    separate_line()
-    # Check if input is 1 or 2
-    while choice_selected not in ("1", "2", "3"):
-        print("Please choose an option:")
-        choice_selected = input(choices)
-        separate_line()
-
-    if choice_selected == "1":
-        print("Generating workout...")
-        separate_line()
-
-    if choice_selected == "2":
-        print("\nLoading your log...")
-        separate_line()
-        
-    
-    if choice_selected == "3":
-        print("SEE YOU AGAIN...")
-        exit()
-
-
 def get_users_name():
     """
     Function gets the First and Last name of the user.
@@ -147,6 +118,34 @@ def separate_line():
     print(" ")
     print("- "*20)
     print(" ")
+
+
+def user_menu():
+    """
+    Question to the user once validated
+    """
+    print("Welcome!!\n")
+    print("What would you like to do?")
+    choices = "1) Workout\n2) View Log\n3) Exit\n"
+    choice_selected = input(choices)
+    separate_line()
+    # Check if input is 1 or 2
+    while choice_selected not in ("1", "2", "3"):
+        print("Please choose an option:")
+        choice_selected = input(choices)
+        separate_line()
+
+    if choice_selected == "1":
+        print("Generating workout...")
+        separate_line()
+
+    if choice_selected == "2":
+        print("\nLoading your log...")
+        separate_line()
+
+    if choice_selected == "3":
+        print("SEE YOU AGAIN...")
+        exit()
 
 
 initial_question()
