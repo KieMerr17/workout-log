@@ -67,13 +67,15 @@ def validate_user(user):
     the spreadsheet.
     If NOT then it appends the name to the sheet.
     """
-    all_names = SHEET.worksheet('profiles')
-    names_list = all_names.col_values(1)
-    if user in names_list:
+    profiles_sheet = SHEET.worksheet('profiles')
+    log_sheet = SHEET.worksheet('log')
+    profiles_names = profiles_sheet.col_values(1)
+    if user in profiles_names:
         print("Loading your profile...\n")
     else:
         user_age = get_users_age()
-        all_names.append_row([user, user_age])
+        profiles_sheet.append_row([user, user_age])
+        log_sheet.append_row([user])
         print("...New profile created...\n")
 
 
