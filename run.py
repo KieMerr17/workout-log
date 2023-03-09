@@ -37,7 +37,17 @@ def get_users_name():
     return user_input
 
 
-def validate_username(user):
+def get_users_age():
+    """
+    Function gets the age of the user.
+    """
+    print("Please enter your age.")
+    print("For example '31'")
+    user_age = input("")
+    return user_age
+
+
+def validate_username(user, age):
     """
     Function checks to see if users inputted name is already on 
     the spreadsheet.
@@ -48,13 +58,14 @@ def validate_username(user):
     if user in names_list:
         print("Located your profile!")
     else:
-        all_names.append_row([user])
+        all_names.append_row([user, age])
         print("*New profile created*")
 
 
 def main():
     user_name = get_users_name()
-    validate_username(user_name)
+    user_age = get_users_age()
+    validate_username(user_name, user_age)
 
 
 main()
