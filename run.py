@@ -16,7 +16,21 @@ SHEET = GSPREAD_CLIENT.open('workout-log')
 
 # Start of Terminal process
 
-print("Welcome to your workout log\n")
+print("__          __        _               _    ")
+print("\ \        / /       | |             | |   ")
+print(" \ \  /\  / /__  _ __| | _____  _   _| |_  ")
+print("  \ \/  \/ / _ \| '__| |/ / _ \| | | | __| ")
+print("   \  /\  / (_) | |  |   < (_) | |_| | |_  ")
+print("    \/  \/_\___/|_|  |_|\_\___/ \__,_|\__| ")
+print(" _                                         ")
+print("| |                                        ")
+print("| |     ___   __ _                         ")
+print("| |    / _ \ / _` |                        ")
+print("| |___| (_) | (_| |                        ")
+print("|______\___/ \__, |                        ")
+print("              __/ |                        ")
+print("             |___/                         ")
+print("                                           ")
 
 
 def initial_question():
@@ -177,19 +191,19 @@ def generate_workout():
     exercises worksheet on Google Sheets
     """
     # Get the exercise data from the sheet
-    # exercise_sheet = SHEET.worksheet('exercises')
-    # exercise_data = exercise_sheet.get_all_values()
+    exercise_sheet = SHEET.worksheet('exercises')
+    exercise_data = exercise_sheet.get_all_values()
 
     # Get the data from each column, ignoring the first row
-    # warmup_col = exercise_sheet.col_values(2)[1:]
-    # exercise_col = exercise_sheet.col_values(3)[1:]
-    # reps_data = exercise_sheet.col_values(4)[1:]
-    # rest_data = exercise_sheet.col_values(5)[1:]
+    warmup_col = exercise_sheet.col_values(2)[1:]
+    exercise_col = exercise_sheet.col_values(3)[1:]
+    reps_data = exercise_sheet.col_values(4)[1:]
+    rest_data = exercise_sheet.col_values(5)[1:]
 
-    # print(warmup_col)
-    # print(exercise_col)
-    # print(reps_data)
-    # print(rest_data)
+    print(warmup_col)
+    print(exercise_col)
+    print(reps_data)
+    print(rest_data)
 
 
 def time_question():
