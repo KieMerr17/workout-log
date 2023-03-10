@@ -54,9 +54,10 @@ def initial_question():
     if choice_selected == "2":
         print("Ok, lets Workout!")
         separate_line()
+        generate_workout()
 
     if choice_selected == "3":
-        print("SEE YOU AGAIN...")
+        print("SEE YOU AGAIN...\n")
         exit()
 
 
@@ -151,7 +152,9 @@ def user_menu():
         separate_line()
 
     if choice_selected == "1":
-        print("Ok, lets Workout!\n")
+        print("Ok, lets Workout!")
+        separate_line()
+        generate_workout()
 
     if choice_selected == "2":
         print("Loading your log...")
@@ -193,6 +196,12 @@ def generate_workout():
     # Get the exercise data from the sheet
     exercise_sheet = SHEET.worksheet('exercises')
     exercise_data = exercise_sheet.get_all_values()
+    
+    time = time_question()
+    if USERS_NAME:
+        print(f"{time} minute workout for: {USERS_NAME[0]}\n")
+    else:
+        print(f"Please enjoy your {time} minute workout:\n")
 
     # Get the data from each column, ignoring the first row
     warmup_col = exercise_sheet.col_values(2)[1:]
@@ -200,10 +209,23 @@ def generate_workout():
     reps_data = exercise_sheet.col_values(4)[1:]
     rest_data = exercise_sheet.col_values(5)[1:]
 
-    print(warmup_col)
-    print(exercise_col)
-    print(reps_data)
-    print(rest_data)
+    # print(warmup_col)
+    # print(exercise_col)
+    # print(reps_data)
+    # print(rest_data)
+
+    # Warm up
+    print("\nWarm Up:")
+    for i in random.sample(range(len(warmup_col)), k=4):
+        print("- " + warmup_col[i])
+
+    # Create the list of exercises and reps
+    exercise_list = []
+    reps_list = []
+    for i, (exercise, reps) in enumerate(zip(exercise_col[1:], reps_data[1:])):
+        if exercise != '':
+            exercise_list.append((i+2, exercise))
+            reps_list.append((i+2, reps))
 
 
 def time_question():
@@ -222,22 +244,25 @@ def time_question():
 
     # Main workout
     if choice_selected == "1":
-        print("loading: 15 minute workout...\n")
+        print("You selected: 15 minutes")
         separate_line()
+        return 15
 
     elif choice_selected == "2":
-        print("Loading: 25 minute workout...\n")
+        print("You selected: 25 minutes")
         separate_line()
+        return 25
 
     elif choice_selected == "3":
-        print("Loading: 45 minute workout...\n")
+        print("You selected: 45 minutes")
         separate_line()
+        return 45
 
     elif choice_selected == "4":
-        print("Loading: 60 minute workout...\n")
+        print("You selected: 60 minutes")
         separate_line()
+        return 60
 
 
 USERS_NAME = []
 initial_question()
-time_question()
