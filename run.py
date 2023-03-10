@@ -38,7 +38,7 @@ def initial_question():
         validate_user(user_name)
 
     if choice_selected == "2":
-        print("Generating workout...")
+        print("Ok, lets Workout!")
         separate_line()
 
     if choice_selected == "3":
@@ -129,22 +129,23 @@ def user_menu():
     print("What would you like to do?")
     choices = "1) Workout\n2) View Log\n3) Exit\n"
     choice_selected = input(choices)
+    separate_line()
     # Check if input is 1 or 2
     while choice_selected not in ("1", "2", "3"):
         print("Please choose an option:")
         choice_selected = input(choices)
-
-    if choice_selected == "1":
-        print("\nGenerating workout...")
         separate_line()
 
+    if choice_selected == "1":
+        print("Ok, lets Workout!\n")
+
     if choice_selected == "2":
-        print("\nLoading your log...")
+        print("Loading your log...")
         separate_line()
         view_user_log()
 
     if choice_selected == "3":
-        print("\nSEE YOU AGAIN...")
+        print("SEE YOU AGAIN...")
         separate_line()
         exit()
 
@@ -190,7 +191,11 @@ def generate_workout():
     # print(reps_data)
     # print(rest_data)
 
-    # Ask the user how long they want to work out for
+
+def time_question():
+    """
+    Ask the question to the useruser how long they want to work out for
+    """
     print("How long would you like to workout?")
     choices = "1) 15 minutes\n2) 25 minutes\n3) 45 minutes\n4) 60 minutes\n"
     choice_selected = input(choices)
@@ -203,18 +208,22 @@ def generate_workout():
 
     # Main workout
     if choice_selected == "1":
-        print("15 minute Workout:\n")
+        print("loading: 15 minute workout...\n")
+        separate_line()
 
     elif choice_selected == "2":
-        print("25 minute Workout:\n")
+        print("Loading: 25 minute workout...\n")
+        separate_line()
 
     elif choice_selected == "3":
-        print("45 minute Workout:\n")
+        print("Loading: 45 minute workout...\n")
+        separate_line()
 
     elif choice_selected == "4":
-        print("60 minute Workout:\n")
+        print("Loading: 60 minute workout...\n")
+        separate_line()
 
 
 USERS_NAME = []
-# initial_question()
-generate_workout()
+initial_question()
+time_question()
