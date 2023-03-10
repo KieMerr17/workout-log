@@ -176,20 +176,43 @@ def generate_workout():
     exercises worksheet on Google Sheets
     """
     # Get the exercise data from the sheet
-    exercise_sheet = SHEET.worksheet('exercises')
-    exercise_data = exercise_sheet.get_all_values()
+    # exercise_sheet = SHEET.worksheet('exercises')
+    # exercise_data = exercise_sheet.get_all_values()
 
     # Get the data from each column, ignoring the first row
-    warmup_col = exercise_sheet.col_values(2)[1:]
-    exercise_col = exercise_sheet.col_values(3)[1:]
-    reps_data = exercise_sheet.col_values(4)[1:]
-    rest_data = exercise_sheet.col_values(5)[1:]
+    # warmup_col = exercise_sheet.col_values(2)[1:]
+    # exercise_col = exercise_sheet.col_values(3)[1:]
+    # reps_data = exercise_sheet.col_values(4)[1:]
+    # rest_data = exercise_sheet.col_values(5)[1:]
 
-    print(warmup_col)
-    print(exercise_col)
-    print(reps_data)
-    print(rest_data)
-    
+    # print(warmup_col)
+    # print(exercise_col)
+    # print(reps_data)
+    # print(rest_data)
+
+    # Ask the user how long they want to work out for
+    print("How long would you like to workout?")
+    choices = "1) 15 minutes\n2) 25 minutes\n3) 45 minutes\n4) 60 minutes\n"
+    choice_selected = input(choices)
+    separate_line()
+    # Check if input is option 1 , 2 , 3 or 4
+    while choice_selected not in ("1", "2", "3", "4"):
+        print("Please choose an option:")
+        choice_selected = input(choices)
+        separate_line()
+
+    # Main workout
+    if choice_selected == "1":
+        print("15 minute Workout:\n")
+
+    elif choice_selected == "2":
+        print("25 minute Workout:\n")
+
+    elif choice_selected == "3":
+        print("45 minute Workout:\n")
+
+    elif choice_selected == "4":
+        print("60 minute Workout:\n")
 
 
 USERS_NAME = []
