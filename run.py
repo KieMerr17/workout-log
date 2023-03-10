@@ -1,4 +1,5 @@
 import gspread
+import random
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 
@@ -26,7 +27,7 @@ def initial_question():
     choices = "1) Login/Register\n2) Workout\n3) Exit\n"
     choice_selected = input(choices)
     separate_line()
-    # Check if input is 1 or 2
+    # Check if input is option 1 , 2 or 3
     while choice_selected not in ("1", "2", "3"):
         print("Please choose an option:")
         choice_selected = input(choices)
@@ -169,5 +170,28 @@ def view_user_log():
     user_menu()
 
 
+def generate_workout():
+    """
+    Generate a random workout using the information stored in the 
+    exercises worksheet on Google Sheets
+    """
+    # Get the exercise data from the sheet
+    exercise_sheet = SHEET.worksheet('exercises')
+    exercise_data = exercise_sheet.get_all_values()
+
+    # Get the data from each column, ignoring the first row
+    warmup_col = exercise_sheet.col_values(2)[1:]
+    exercise_col = exercise_sheet.col_values(3)[1:]
+    reps_data = exercise_sheet.col_values(4)[1:]
+    rest_data = exercise_sheet.col_values(5)[1:]
+
+    print(warmup_col)
+    print(exercise_col)
+    print(reps_data)
+    print(rest_data)
+    
+
+
 USERS_NAME = []
-initial_question()
+# initial_question()
+generate_workout()
