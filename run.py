@@ -200,7 +200,6 @@ def generate_workout():
     """
     # Get the exercise data from the sheet
     exercise_sheet = SHEET.worksheet('exercises')
-    exercise_data = exercise_sheet.get_all_values()
     
     time = time_question()
     if USERS_NAME:
@@ -211,26 +210,32 @@ def generate_workout():
     # Get the data from each column, ignoring the first row
     warmup_col = exercise_sheet.col_values(2)[1:]
     exercise_col = exercise_sheet.col_values(3)[1:]
-    reps_data = exercise_sheet.col_values(4)[1:]
-    rest_data = exercise_sheet.col_values(5)[1:]
 
-    # print(warmup_col)
-    # print(exercise_col)
-    # print(reps_data)
-    # print(rest_data)
+    # Depending on time selected, reps/rest times given 
+    if time == 15:
+        reps_data = exercise_sheet.col_values(4)[1:3]
+        k = 4
+    elif time == 25:
+        reps_data = exercise_sheet.col_values(4)[1:4]
+        k = 6
+    elif time == 45:
+        reps_data = exercise_sheet.col_values(4)[1:5]
+        k = 8
+    elif time == 60:
+        reps_data = exercise_sheet.col_values(4)[1:6]
+        k = 10
 
     # Warm up
     print("\nWarm Up:")
     for i in random.sample(range(len(warmup_col)), k=4):
         print("- " + warmup_col[i])
 
-    # Create the list of exercises and reps
-    exercise_list = []
-    reps_list = []
-    for i, (exercise, reps) in enumerate(zip(exercise_col[1:], reps_data[1:])):
-        if exercise != '':
-            exercise_list.append((i+2, exercise))
-            reps_list.append((i+2, reps))
+    # Main Workout
+    print("\nMain Workout:")
+    for i in random.sample(range(len(exercise_col)), k):
+        reps = random.choice(reps_data)
+        print("- " + exercise_col[i] + "\n- " + str(reps) + "\n")
+        reps_data.append(reps)
 
 
 def time_question():
