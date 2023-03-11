@@ -236,6 +236,13 @@ def generate_workout():
         reps = random.choice(reps_data)
         print("- " + exercise_col[i] + "\n- " + str(reps) + "\n")
         reps_data.append(reps)
+    
+    if USERS_NAME:
+        separate_line()
+        user_menu()
+    else:
+        separate_line()
+        initial_question()
 
 
 def time_question():
@@ -316,6 +323,19 @@ def adjust_log():
 
     # Message saying which exercise has been updated and the new value
     print(f"\n{selected_exercise} has been updated to: {new_value}\n")
+
+    # Ask if user would like to adjust another exercise
+    adjust_again = input("Would you like to adjust another?\n").title()
+
+    while adjust_again not in ("Yes", "No"):
+        print("\nErr: Please enter Yes or No")
+        adjust_again = input("Would you like to adjust another?\n").title()
+
+    if adjust_again == "Yes":
+        adjust_log()
+    if adjust_again == "No":
+        separate_line()
+        user_menu()
 
 
 USERS_NAME = []
