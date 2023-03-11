@@ -16,21 +16,25 @@ SHEET = GSPREAD_CLIENT.open('workout-log')
 
 # Start of Terminal process
 
-print("__          __        _               _    ")
-print("\ \        / /       | |             | |   ")
-print(" \ \  /\  / /__  _ __| | _____  _   _| |_  ")
-print("  \ \/  \/ / _ \| '__| |/ / _ \| | | | __| ")
-print("   \  /\  / (_) | |  |   < (_) | |_| | |_  ")
-print("    \/  \/_\___/|_|  |_|\_\___/ \__,_|\__| ")
-print(" _                                         ")
-print("| |                                        ")
-print("| |     ___   __ _                         ")
-print("| |    / _ \ / _` |                        ")
-print("| |___| (_) | (_| |                        ")
-print("|______\___/ \__, |                        ")
-print("              __/ |                        ")
-print("             |___/                         ")
-print("                                           ")
+print(
+    "__          __        _               _\n"
+    "\ \        / /       | |             | |\n"
+    " \ \  /\  / /__  _ __| | _____  _   _| |_\n"
+    "  \ \/  \/ / _ \| '__| |/ / _ \| | | | __|\n"
+    "   \  /\  / (_) | |  |   < (_) | |_| | |_\n"
+    "    \/  \/_\___/|_|  |_|\_\___/ \__,_|\__|\n"
+    " _\n"
+    "| |\n"
+    "| |     ___   __ _\n"
+    "| |    / _ \ / _` |\n"
+    "| |___| (_) | (_| |\n"
+    "|______\___/ \__, |\n"
+    "              __/ |\n"
+    "             |___/\n\n"
+)
+
+# Google Sheet information used by more than one function
+log_sheet = SHEET.worksheet('log')
 
 
 def initial_question():
@@ -54,10 +58,12 @@ def initial_question():
     if choice_selected == "2":
         print("Ok, lets Workout!")
         separate_line()
-        generate_workout()
+        time = time_question()
+        generate_workout(time, USERS_NAME)
 
     if choice_selected == "3":
         print("SEE YOU AGAIN...\n")
+        separate_line()
         exit()
 
 
@@ -113,7 +119,6 @@ def validate_user(user):
     If NOT then it appends the name to the sheet.
     """
     profiles_sheet = SHEET.worksheet('profiles')
-    log_sheet = SHEET.worksheet('log')
     profiles_names = profiles_sheet.col_values(1)
     if user in profiles_names:
         print("\nLoading your profile...")
@@ -142,10 +147,13 @@ def user_menu():
     Question to the user once validated
     """
     print("What would you like to do?")
-    choices = "1) Workout\n2) View Log\n3) Adjust Log\n4) Exit\n"
+    choices = "1) Workout\n2) View / Adjust Log\n3) Exit\n"
     choice_selected = input(choices)
     separate_line()
-    # Check if input is 1, 2, 3 or 4
+
+    user = USERS_NAME
+
+    # Check if input is 1, 2, or 3
     while choice_selected not in ("1", "2", "3", "4"):
         print("Err: Please enter option 1, 2, 3 or 4")
         choice_selected = input(choices)
@@ -154,36 +162,31 @@ def user_menu():
     if choice_selected == "1":
         print("Ok, lets Workout!")
         separate_line()
-        generate_workout()
+        time = time_question()
+        generate_workout(time, user)
 
     if choice_selected == "2":
-        print("Loading your log...")
-        separate_line()
-        view_user_log()
-
-    if choice_selected == "3":
         print("Lets first load your log...")
         separate_line()
-        adjust_log()
+        adjust_log(user)
 
-    if choice_selected == "4":
+    if choice_selected == "3":
         print("SEE YOU AGAIN...")
         separate_line()
         exit()
 
 
-def view_user_log():
+def view_user_log(user):
     """
     Generate current log history for the user logged in
     """
-    name = "".join(USERS_NAME)  # convert USER_NAME to a string
-    log_sheet = SHEET.worksheet('log')
-    find_user = log_sheet.find(name, in_column=1)
+    user = "".join(USERS_NAME)  # convert USER_NAME to a string
+    find_user = log_sheet.find(user, in_column=1)
     users_row = find_user.row
     users_log = log_sheet.row_values(users_row)  # current users log
     exercise = log_sheet.row_values(1)  # list of the exercise headings
 
-    print(f"Workout Log for: {name}\n")
+    print(f"Workout Log for: {user}\n")
     # Create dictionary for exercise name and the users value
     user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
 
@@ -193,17 +196,16 @@ def view_user_log():
     return user_data
 
 
-def generate_workout():
+def generate_workout(time, user):
     """
-    Generate a random workout using the information stored in the 
+    Generate a random workout using the information stored in the
     exercises worksheet on Google Sheets
     """
     # Get the exercise data from the sheet
     exercise_sheet = SHEET.worksheet('exercises')
-    
-    time = time_question()
-    if USERS_NAME:
-        print(f"{time} minute workout for: {USERS_NAME[0]}\n")
+
+    if user:
+        print(f"{time} minute workout for: {user[0]}\n")
     else:
         print(f"Please enjoy your {time} minute workout:\n")
 
@@ -211,7 +213,7 @@ def generate_workout():
     warmup_col = exercise_sheet.col_values(2)[1:]
     exercise_col = exercise_sheet.col_values(3)[1:]
 
-    # Depending on time selected, reps/rest times given 
+    # Depending on time selected, reps/rest times given
     if time == 15:
         reps_data = exercise_sheet.col_values(4)[1:3]
         k = 4
@@ -236,8 +238,8 @@ def generate_workout():
         reps = random.choice(reps_data)
         print("- " + exercise_col[i] + "\n- " + str(reps) + "\n")
         reps_data.append(reps)
-    
-    if USERS_NAME:
+
+    if user:
         separate_line()
         user_menu()
     else:
@@ -281,25 +283,33 @@ def time_question():
         return 60
 
 
-def adjust_log():
+def adjust_log(user):
     """
     give the user the option to adjust the number element of their
     user log, either increase or decrease it.
     """
-    name = "".join(USERS_NAME)  # convert USER_NAME to a string
-    log_sheet = SHEET.worksheet('log')
-    find_user = log_sheet.find(name, in_column=1)
+    user = "".join(USERS_NAME)  # convert USER_NAME to a string
+
+    find_user = log_sheet.find(user, in_column=1)
     users_row = find_user.row
     users_log = log_sheet.row_values(users_row)  # current users log
     exercise = log_sheet.row_values(1)  # list of the exercise headings
 
-    users_log_info = view_user_log()
+    users_log_info = view_user_log(user)
     selected_exercise = input("Which exercise shall we adjust?\n").title()
+
+    # First check for exit
+    if selected_exercise == "Exit":
+        separate_line()
+        user_menu()
 
     #  Check if input data is in list of exercises
     while selected_exercise not in users_log_info.keys():
         print("\nErr: Exercise not recognized.")
-        selected_exercise = input("Which exercise shall we adjust?\n").title()
+        selected_exercise = input("Enter exercise or Exit to return\n").title()
+        if selected_exercise == "Exit":
+            separate_line()
+            user_menu()
 
     while True:
         #  Enter new value for the exercise
@@ -313,16 +323,16 @@ def adjust_log():
 
     # Add to a variable the updated user log values in a Dictionary format.
     new_user_log = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
-
     # Update users selected exercise
     new_user_log[selected_exercise] = users_log_info[selected_exercise]
-
     # Transfer over the new information to Google Sheets
     for i in range(1, len(exercise)):
         log_sheet.update_cell(users_row, i+1, new_user_log[exercise[i]])
 
     # Message saying which exercise has been updated and the new value
+    separate_line()
     print(f"\n{selected_exercise} has been updated to: {new_value}\n")
+    separate_line()
 
     # Ask if user would like to adjust another exercise
     adjust_again = input("Would you like to adjust another?\n").title()
@@ -332,7 +342,8 @@ def adjust_log():
         adjust_again = input("Would you like to adjust another?\n").title()
 
     if adjust_again == "Yes":
-        adjust_log()
+        separate_line()
+        adjust_log(user)
     if adjust_again == "No":
         separate_line()
         user_menu()
