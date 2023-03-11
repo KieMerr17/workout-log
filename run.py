@@ -147,7 +147,7 @@ def user_menu():
     separate_line()
     # Check if input is 1, 2, 3 or 4
     while choice_selected not in ("1", "2", "3", "4"):
-        print("Err: Please choose an option:")
+        print("Err: Please enter option 1, 2, 3 or 4")
         choice_selected = input(choices)
         separate_line()
 
@@ -187,7 +187,7 @@ def view_user_log():
     # Create dictionary for exercise name and the users value
     user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
 
-    # Print Dictionary without '[]'
+    # Print Dictionary without '[]' to the terminal
     print('\n'.join([f"{key}: {value}" for key, value in user_data.items()]))
     separate_line()
     return user_data
@@ -274,20 +274,43 @@ def adjust_log():
     give the user the option to adjust the number element of their
     user log, either increase or decrease it.
     """
+    name = "".join(USERS_NAME)  # convert USER_NAME to a string
+    log_sheet = SHEET.worksheet('log')
+    find_user = log_sheet.find(name, in_column=1)
+    users_row = find_user.row
+    users_log = log_sheet.row_values(users_row)  # current users log
+    exercise = log_sheet.row_values(1)  # list of the exercise headings
+
     users_log_info = view_user_log()
     selected_exercise = input("Which exercise shall we adjust?\n").title()
-    print(users_log_info)
 
-    if selected_exercise not in users_log_info.keys():
-        print("Err: Exercise not recognized.")
-    else:
-        while True:
-            new_value = input("Enter new value:\n")
-            if new_value.isdigit():
-                users_log_info[selected_exercise] = new_value
-                return users_log_info
-            else:
-                print("Err: Please enter a number.")
+    #  Check if input data is in list of exercises
+    while selected_exercise not in users_log_info.keys():
+        print("\nErr: Exercise not recognized.")
+        selected_exercise = input("Which exercise shall we adjust?\n").title()
+
+    while True:
+        #  Enter new value for the exercise
+        new_value = input("Enter new value:\n")
+        if new_value.isdigit():
+            #  Add new value to user log and return new list
+            users_log_info[selected_exercise] = new_value
+            break
+        else:
+            print("\nErr: Please enter a number.")
+
+    # Add to a variable the updated user log values in a Dictionary format.
+    new_user_log = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
+
+    # Update users selected exercise
+    new_user_log[selected_exercise] = users_log_info[selected_exercise]
+
+    # Transfer over the new information to Google Sheets
+    for i in range(1, len(exercise)):
+        log_sheet.update_cell(users_row, i+1, new_user_log[exercise[i]])
+
+    # Message saying which exercise has been updated and the new value
+    print(f"\n{selected_exercise} has been updated to: {new_value}\n")
 
 
 USERS_NAME = []
