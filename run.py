@@ -43,7 +43,7 @@ def initial_question():
     separate_line()
     # Check if input is option 1 , 2 or 3
     while choice_selected not in ("1", "2", "3"):
-        print("Please choose an option:")
+        print("Err: Please choose an option:")
         choice_selected = input(choices)
         separate_line()
 
@@ -147,7 +147,7 @@ def user_menu():
     separate_line()
     # Check if input is 1, 2, 3 or 4
     while choice_selected not in ("1", "2", "3", "4"):
-        print("Please choose an option:")
+        print("Err: Please choose an option:")
         choice_selected = input(choices)
         separate_line()
 
@@ -165,7 +165,6 @@ def user_menu():
         print("Lets first load your log...")
         separate_line()
         adjust_log()
-        
 
     if choice_selected == "4":
         print("SEE YOU AGAIN...")
@@ -187,7 +186,7 @@ def view_user_log():
     print(f"Workout Log for: {name}\n")
     # Create dictionary for exercise name and the users value
     user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
-    
+
     # Print Dictionary without '[]'
     print('\n'.join([f"{key}: {value}" for key, value in user_data.items()]))
     separate_line()
@@ -272,19 +271,24 @@ def time_question():
 
 def adjust_log():
     """
-    give the user the option to adjust the number element of their 
+    give the user the option to adjust the number element of their
     user log, either increase or decrease it.
     """
     users_log_info = view_user_log()
-    exercise_to_adjust = str(input("Which exercise do you want to adjust?\n")).title()
-    print(exercise)
-    
-    print(users_log_info.keys())
+    selected_exercise = input("Which exercise shall we adjust?\n").title()
+    print(users_log_info)
 
-    if exercise in users_log_info.keys():
-        print("Exercise found.")
+    if selected_exercise not in users_log_info.keys():
+        print("Err: Exercise not recognized.")
     else:
-        print("found not exercise")
+        while True:
+            new_value = input("Enter new value:\n")
+            if new_value.isdigit():
+                users_log_info[selected_exercise] = new_value
+                return users_log_info
+            else:
+                print("Err: Please enter a number.")
+
 
 USERS_NAME = []
 initial_question()
