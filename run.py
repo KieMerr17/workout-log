@@ -142,11 +142,11 @@ def user_menu():
     Question to the user once validated
     """
     print("What would you like to do?")
-    choices = "1) Workout\n2) View Log\n3) Exit\n"
+    choices = "1) Workout\n2) View Log\n3) Adjust Log\n4) Exit\n"
     choice_selected = input(choices)
     separate_line()
-    # Check if input is 1 or 2
-    while choice_selected not in ("1", "2", "3"):
+    # Check if input is 1, 2, 3 or 4
+    while choice_selected not in ("1", "2", "3", "4"):
         print("Please choose an option:")
         choice_selected = input(choices)
         separate_line()
@@ -162,6 +162,12 @@ def user_menu():
         view_user_log()
 
     if choice_selected == "3":
+        print("Lets first load your log...")
+        separate_line()
+        adjust_log()
+        
+
+    if choice_selected == "4":
         print("SEE YOU AGAIN...")
         separate_line()
         exit()
@@ -179,13 +185,13 @@ def view_user_log():
     exercise = log_sheet.row_values(1)  # list of the exercise headings
 
     print(f"Workout Log for: {name}\n")
-    user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
     # Create dictionary for exercise name and the users value
-
-    print('\n'.join([f"{key}: {value}" for key, value in user_data.items()]))
+    user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
+    
     # Print Dictionary without '[]'
+    print('\n'.join([f"{key}: {value}" for key, value in user_data.items()]))
     separate_line()
-    user_menu()
+    return user_data
 
 
 def generate_workout():
@@ -263,6 +269,22 @@ def time_question():
         separate_line()
         return 60
 
+
+def adjust_log():
+    """
+    give the user the option to adjust the number element of their 
+    user log, either increase or decrease it.
+    """
+    users_log_info = view_user_log()
+    exercise_to_adjust = str(input("Which exercise do you want to adjust?\n")).title()
+    print(exercise)
+    
+    print(users_log_info.keys())
+
+    if exercise in users_log_info.keys():
+        print("Exercise found.")
+    else:
+        print("found not exercise")
 
 USERS_NAME = []
 initial_question()
