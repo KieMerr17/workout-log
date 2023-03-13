@@ -128,13 +128,16 @@ def get_users_email():
         try:
             user_input = input("Enter your email address..\n").replace(" ", "")
             if re.match(r"[^@]+@[^@]+\.[^@]+", user_input):
-                return user_input
-
+                confirm_email = input("Confirm email..\n").replace(" ", "")
+                if user_input == confirm_email:
+                    return user_input
+                else:
+                    raise ValueError("Email address didnt match")
             raise ValueError("Invalid email address entered.")
 
         # If email is not valid, display error message
         except ValueError as err_msg:
-            print(f"Error: {str(err_msg)}")
+            print(Col.RED + f"Error: {str(err_msg)}")
 
 
 def validate_user(user):
@@ -148,8 +151,21 @@ def validate_user(user):
     user_email = profiles_sheet.col_values(2)
 
     if user in profiles_names:
-        separate_line()
-        user_menu()
+        # Get the users registered email address
+        find_user = profiles_sheet.find(user, in_column=1)
+        users_row = find_user.row
+        users_log = profiles_sheet.row_values(users_row)
+        stored_email = users_log[1]
+        while True:
+            try:
+                varify_email = input("\nVarify your email address..\n").title()
+                if varify_email in (stored_email, "Exit"):
+                    separate_line()
+                    user_menu()
+                else:
+                    raise ValueError("Confirm email or 'Exit' to return")
+            except ValueError as err_msg:
+                print(Col.RED + "\nErr: " + str(err_msg))
     else:
         # Question new profile
         new_profile = input("\nDo you want to create a new profile?\n").title()
