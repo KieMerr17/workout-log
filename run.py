@@ -126,18 +126,18 @@ def get_users_email():
     """
     while True:
         try:
-            user_input = input("Enter your email address..\n").replace(" ", "")
-            if re.match(r"[^@]+@[^@]+\.[^@]+", user_input):
-                confirm_email = input("Confirm email..\n").replace(" ", "")
-                if user_input == confirm_email:
-                    return user_input
-                else:
-                    raise ValueError("Email address didnt match")
-            raise ValueError("Invalid email address entered.")
+            user_input = input("Enter your email address: \n").replace(" ", "")
+            if not re.match(r"[^@]+@[^@]+\.[^@]+", user_input):
+                raise ValueError("Invalid email address entered.")
 
-        # If email is not valid, display error message
+            confirm_email = input("Confirm email address: \n").replace(" ", "")
+
+            if user_input == confirm_email:
+                return confirm_email
+            else:
+                raise ValueError("Email address didn't match.")
         except ValueError as err_msg:
-            print(Col.RED + f"Error: {str(err_msg)}")
+            print(Col.RED + f"\nErr: {str(err_msg)} Please try again.\n")
 
 
 def validate_user(user):
@@ -150,12 +150,15 @@ def validate_user(user):
     profiles_names = profiles_sheet.col_values(1)
     user_email = profiles_sheet.col_values(2)
 
+    # Check users name is stored or not
     if user in profiles_names:
         # Get the users registered email address
         find_user = profiles_sheet.find(user, in_column=1)
         users_row = find_user.row
         users_log = profiles_sheet.row_values(users_row)
         stored_email = users_log[1]
+
+        # Ask to varify the user email before continue with login
         while True:
             try:
                 varify_email = input("\nVarify your email address..\n").title()
@@ -163,7 +166,7 @@ def validate_user(user):
                     separate_line()
                     user_menu()
                 else:
-                    raise ValueError("Confirm email or 'Exit' to return")
+                    raise ValueError("Incorrect re-enter or 'Exit'")
             except ValueError as err_msg:
                 print(Col.RED + "\nErr: " + str(err_msg))
     else:
@@ -448,4 +451,5 @@ def yes_no_question(user_input):
 
 
 USERS_NAME = []
-initial_question()
+# initial_question()
+get_users_email()
