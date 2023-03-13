@@ -145,6 +145,7 @@ def validate_user(user):
     """
     profiles_sheet = SHEET.worksheet('profiles')
     profiles_names = profiles_sheet.col_values(1)
+    user_email = profiles_sheet.col_values(2)
 
     if user in profiles_names:
         separate_line()
@@ -159,8 +160,11 @@ def validate_user(user):
             # Ask user age
             user_age = get_users_age()
             print(Col.BLUE + "\nAdding your age...\n")
+            # Ask user email
+            user_email = get_users_email()
+            print(Col.BLUE + "\nAdding your email...\n")
             # Add profile to SHEETS
-            profiles_sheet.append_row([user, user_age])
+            profiles_sheet.append_row([user, user_email, user_age])
             log_sheet.append_row([user] + [0]*14)
             print(Col.GREEN + "\n>> New profile created <<")
             separate_line()
