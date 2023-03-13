@@ -1,7 +1,7 @@
-import gspread
 import random
+import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
+from colors import Color as Col
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -16,7 +16,7 @@ SHEET = GSPREAD_CLIENT.open('workout-log')
 
 # Start of Terminal process
 
-print(
+print(Col.BLUE +
     "__          __        _               _\n"
     "\ \        / /       | |             | |\n"
     " \ \  /\  / /__  _ __| | _____  _   _| |_\n"
