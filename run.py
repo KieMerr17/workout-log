@@ -61,7 +61,7 @@ def initial_question():
         generate_workout(time, USERS_NAME)
 
     if choice_selected == "3":
-        print(Col.BLUE + "SEE YOU AGAIN...\n")
+        print(Col.BLUE + "SEE YOU AGAIN...")
         separate_line()
         exit()
 
@@ -74,21 +74,26 @@ def get_users_name():
     the input it titled to avoid multiple entries before returning.
     """
     while True:
-        user_input = input("Please enter your First and Last name...\n")
-        name_list = user_input.split()
-        if len(name_list) == 2:
+        try:
+            user_input = input("Please enter your First and Last name...\n")
+            name_list = user_input.split()
             # Check that the input contains just a first and last name only
-            if user_input.replace(" ", "").isalpha():
-                # Check that the input contains only letters after removing
-                # any spaces
-                titled_input = " ".join(name_list).title().rstrip()
-                USERS_NAME.append(titled_input)
-                print(Col.GREEN + "\nLooking for your profile...")
-                return titled_input
-            else:
-                print(Col.RED + "Err: Please enter only letters.")
-        else:
-            print(Col.RED + "Err: Incorrect number of names given.")
+            if len(name_list) != 2:
+                raise ValueError("Incorrect number of names given.")
+
+            # Check that the input contains only letters after removing
+            # any spaces
+            if not user_input.replace(" ", "").isalpha():
+                raise ValueError("Please enter only letters.")
+
+            titled_input = " ".join(name_list).title().rstrip()
+            USERS_NAME.append(titled_input)
+            print(Col.GREEN + "\nLooking for your profile...")
+            return titled_input
+
+        # ValueError to raise
+        except ValueError as err_msg:
+            print(Col.RED + "Err: " + str(err_msg))
 
 
 def get_users_age():
@@ -253,6 +258,7 @@ def generate_workout(time, user):
         print("- " + exercise_col[i] + "\n- " + str(reps) + "\n")
         reps_data.append(reps)
 
+    # If USER_NAME has value, go to user_menu(), else main menu.
     if user:
         separate_line()
         user_menu()
@@ -387,13 +393,17 @@ def adjust_exercise(users_log_info, exercise, users_log, users_row):
 
 def yes_no_question(user_input):
     """
-    returns a value of either Yes or No
+    Returns a value of either Yes or No
     """
-    while user_input not in ("Yes", "No"):
-        print(Col.RED + "Err: Please enter Yes or No")
-        user_input = input("").title()
-
-    return user_input
+    while True:
+        try:
+            if user_input.title() not in ("Yes", "No"):
+                raise ValueError("Please enter Yes or No")
+            else:
+                return user_input.title()
+        except ValueError as err:
+            print(Col.RED + f"Err: {err}")
+            user_input = input("").title()
 
 
 USERS_NAME = []
