@@ -126,12 +126,14 @@ def get_users_email():
     """
     while True:
         try:
+            # Get users email address input and remove whitespace
             user_input = input("Enter your email address: \n").replace(" ", "")
             if not re.match(r"[^@]+@[^@]+\.[^@]+", user_input):
                 raise ValueError("Invalid email address entered.")
 
             confirm_email = input("Confirm email address: \n").replace(" ", "")
 
+            # Check confirmed email address matches the first without spaces
             if user_input == confirm_email:
                 return confirm_email
             else:
