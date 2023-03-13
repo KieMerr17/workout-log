@@ -1,3 +1,4 @@
+import re
 import random
 import gspread
 from google.oauth2.service_account import Credentials
@@ -41,10 +42,11 @@ def initial_question():
     Ask the user what they would like to do
     """
     print("What would you like to do?")
-    choices = "1) Login/Register\n2) Workout\n3) Exit\n"
+    choices = "1) Login / Register\n2) Workout\n3) Exit\n"
     choice_selected = input(choices)
     separate_line()
-    # Check if input is option 1 , 2 or 3
+    # Check if input is option 1 , 2 or 3clear
+
     while choice_selected not in ("1", "2", "3"):
         print(Col.RED + "Err: Please choose an option:")
         choice_selected = input(choices)
@@ -117,6 +119,24 @@ def get_users_age():
             print(Col.RED + "Err: Please enter only numbers.")
 
 
+def get_users_email():
+    """
+    Function verifies that the input is a valid email address.
+    If it doesnt match then a value error is raised
+    """
+    while True:
+        try:
+            user_input = input("Enter your email address..\n").replace(" ", "")
+            if re.match(r"[^@]+@[^@]+\.[^@]+", user_input):
+                return user_input
+
+            raise ValueError("Invalid email address entered.")
+
+        # If email is not valid, display error message
+        except ValueError as err_msg:
+            print(f"Error: {str(err_msg)}")
+
+
 def validate_user(user):
     """
     Function checks to see if users input name is already on
@@ -125,6 +145,7 @@ def validate_user(user):
     """
     profiles_sheet = SHEET.worksheet('profiles')
     profiles_names = profiles_sheet.col_values(1)
+
     if user in profiles_names:
         separate_line()
         user_menu()
