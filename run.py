@@ -163,8 +163,11 @@ def validate_user(user):
         # Ask to varify the user email before continue with login
         while True:
             try:
-                varify_email = input("\nVarify your email address..\n").title()
-                if varify_email in (stored_email, "Exit"):
+                varify_email = input("\nVarify your email address..\n")
+                adj_input = varify_email.replace(" ", "")
+
+                # Varify email matches up with stored email
+                if adj_input in (stored_email, "Exit"):
                     separate_line()
                     user_menu()
                 else:
@@ -453,5 +456,5 @@ def yes_no_question(user_input):
 
 
 USERS_NAME = []
-# initial_question()
+initial_question()
 get_users_email()
