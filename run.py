@@ -16,22 +16,21 @@ SHEET = GSPREAD_CLIENT.open('workout-log')
 
 # Start of Terminal process
 
-print(Col.BLUE +
-    "__          __        _               _\n"
-    "\ \        / /       | |             | |\n"
-    " \ \  /\  / /__  _ __| | _____  _   _| |_\n"
-    "  \ \/  \/ / _ \| '__| |/ / _ \| | | | __|\n"
-    "   \  /\  / (_) | |  |   < (_) | |_| | |_\n"
-    "    \/  \/_\___/|_|  |_|\_\___/ \__,_|\__|\n"
-    " _\n"
-    "| |\n"
-    "| |     ___   __ _\n"
-    "| |    / _ \ / _` |\n"
-    "| |___| (_) | (_| |\n"
-    "|______\___/ \__, |\n"
-    "              __/ |\n"
-    "             |___/\n\n"
-)
+print(Col.BLUE + "__          __        _               _    ")
+print(Col.BLUE + "\ \        / /       | |             | |   ")
+print(Col.BLUE + " \ \  /\  / /__  _ __| | _____  _   _| |_  ")
+print(Col.BLUE + "  \ \/  \/ / _ \| '__| |/ / _ \| | | | __| ")
+print(Col.BLUE + "   \  /\  / (_) | |  |   < (_) | |_| | |_  ")
+print(Col.BLUE + "    \/  \/_\___/|_|  |_|\_\___/ \__,_|\__| ")
+print(Col.YELLOW + " _                                         ")
+print(Col.YELLOW + "| |                                        ")
+print(Col.YELLOW + "| |     ___   __ _                         ")
+print(Col.YELLOW + "| |    / _ \ / _` |                        ")
+print(Col.YELLOW + "| |___| (_) | (_| |                        ")
+print(Col.YELLOW + "|______\___/ \__, |                        ")
+print(Col.YELLOW + "              __/ |                        ")
+print(Col.YELLOW + "             |___/                         ")
+print("\n")
 
 # Google Sheet information used by more than one function
 log_sheet = SHEET.worksheet('log')
@@ -47,7 +46,7 @@ def initial_question():
     separate_line()
     # Check if input is option 1 , 2 or 3
     while choice_selected not in ("1", "2", "3"):
-        print("Err: Please choose an option:")
+        print(Col.RED + "Err: Please choose an option:")
         choice_selected = input(choices)
         separate_line()
 
@@ -56,13 +55,13 @@ def initial_question():
         validate_user(user_name)
 
     if choice_selected == "2":
-        print("Ok, lets Workout!")
+        print(Col.GREEN + "Ok, lets Workout!")
         separate_line()
         time = time_question()
         generate_workout(time, USERS_NAME)
 
     if choice_selected == "3":
-        print("SEE YOU AGAIN...\n")
+        print(Col.BLUE + "SEE YOU AGAIN...\n")
         separate_line()
         exit()
 
@@ -86,9 +85,9 @@ def get_users_name():
                 USERS_NAME.append(titled_input)
                 return titled_input
             else:
-                print("Err: Please enter only letters.")
+                print(Col.RED + "Err: Please enter only letters.")
         else:
-            print("Err: Incorrect number of names given.")
+            print(Col.RED + "Err: Incorrect number of names given.")
 
 
 def get_users_age():
@@ -107,9 +106,9 @@ def get_users_age():
                 # Check that the input age is between 16 - 100
                 return age
             else:
-                print("Err: Age must be between 16 - 100.")
+                print(Col.RED + "Err: Age must be between 16 - 100.")
         else:
-            print("Err: Please enter only numbers.")
+            print(Col.RED + "Err: Please enter only numbers.")
 
 
 def validate_user(user):
@@ -121,14 +120,14 @@ def validate_user(user):
     profiles_sheet = SHEET.worksheet('profiles')
     profiles_names = profiles_sheet.col_values(1)
     if user in profiles_names:
-        print("\nLoading your profile...")
+        print(Col.GREEN + "\nLoading your profile...")
         separate_line()
         user_menu()
     else:
         user_age = get_users_age()
         profiles_sheet.append_row([user, user_age])
         log_sheet.append_row([user] + [0]*14)
-        print("\n>> New profile created <<")
+        print(Col.GREEN + "\n>> New profile created <<")
         separate_line()
         user_menu()
 
@@ -138,7 +137,7 @@ def separate_line():
     Print '-' lines to separate messages
     """
     print(" ")
-    print("- "*20)
+    print(Col.YELLOW + "- "*20)
     print(" ")
 
 
@@ -155,23 +154,23 @@ def user_menu():
 
     # Check if input is 1, 2, or 3
     while choice_selected not in ("1", "2", "3"):
-        print("Err: Please enter option 1, 2 or 3")
+        print(Col.RED + "Err: Please enter option 1, 2 or 3")
         choice_selected = input(choices)
         separate_line()
 
     if choice_selected == "1":
-        print("Ok, lets Workout!")
+        print(Col.GREEN + "Ok, lets Workout!")
         separate_line()
         time = time_question()
         generate_workout(time, user)
 
     if choice_selected == "2":
-        print("Loading your log...")
+        print(Col.GREEN + "Loading your log...")
         separate_line()
         adjust_log(user)
 
     if choice_selected == "3":
-        print("SEE YOU AGAIN...")
+        print(Col.BLUE + "SEE YOU AGAIN...")
         separate_line()
         exit()
 
@@ -186,7 +185,7 @@ def view_user_log(user):
     users_log = log_sheet.row_values(users_row)  # current users log
     exercise = log_sheet.row_values(1)  # list of the exercise headings
 
-    print(f"Workout Log for: {user}\n")
+    print(Col.GREEN + f"Workout Log for: {user}\n")
     # Create dictionary for exercise name and the users value
     user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
 
@@ -205,9 +204,9 @@ def generate_workout(time, user):
     exercise_sheet = SHEET.worksheet('exercises')
 
     if user:
-        print(f"{time} minute workout for: {user[0]}\n")
+        print(f"{time} minute workout for: " + Col.GREEN + f"{user[0]}\n")
     else:
-        print(f"Please enjoy your {time} minute workout:\n")
+        print("Please enjoy your: " + Col.GREEN + f"{time} minute workout\n")
 
     # Get the data from each column, ignoring the first row
     warmup_col = exercise_sheet.col_values(2)[1:]
@@ -228,12 +227,12 @@ def generate_workout(time, user):
         k = 10
 
     # Warm up
-    print("\nWarm Up:")
+    print(Col.YELLOW + "\nWarm Up:")
     for i in random.sample(range(len(warmup_col)), k=4):
         print("- " + warmup_col[i])
 
     # Main Workout
-    print("\nMain Workout:")
+    print(Col.YELLOW + "\nMain Workout:")
     for i in random.sample(range(len(exercise_col)), k):
         reps = random.choice(reps_data)
         print("- " + exercise_col[i] + "\n- " + str(reps) + "\n")
@@ -257,28 +256,28 @@ def time_question():
     separate_line()
     # Check if input is option 1 , 2 , 3 or 4
     while choice_selected not in ("1", "2", "3", "4"):
-        print("Please choose an option:")
+        print(Col.RED + "Err: Please choose an option:")
         choice_selected = input(choices)
         separate_line()
 
     # Main workout
     if choice_selected == "1":
-        print("You selected: 15 minutes")
+        print("You selected: " + Col.GREEN + "15 minutes")
         separate_line()
         return 15
 
     elif choice_selected == "2":
-        print("You selected: 25 minutes")
+        print("You selected: " + Col.GREEN + "25 minutes")
         separate_line()
         return 25
 
     elif choice_selected == "3":
-        print("You selected: 45 minutes")
+        print("You selected: " + Col.GREEN + "30 minutes")
         separate_line()
         return 45
 
     elif choice_selected == "4":
-        print("You selected: 60 minutes")
+        print("You selected: " + Col.GREEN + "60 minutes")
         separate_line()
         return 60
 
@@ -301,7 +300,7 @@ def adjust_log(user):
     adjust_log_question = input("Would you like to adjust your log?\n").title()
 
     while adjust_log_question not in ("Yes", "No"):
-        print("\nErr: Please enter Yes or No")
+        print(Col.RED + "\nErr: Please enter Yes or No")
         adjust_log_question = input("Want to adjust your log?\n").title()
 
     if adjust_log_question == "Yes":
@@ -331,7 +330,7 @@ def adjust_exercise(users_log_info, exercise, users_log, users_row):
 
     #  Check if input data is in list of exercises
     while selected_exercise not in users_log_info.keys():
-        print("\nErr: Exercise not recognized.")
+        print(Col.RED + "\nErr: Exercise not recognized.")
         selected_exercise = input("Enter exercise or Exit to return\n").title()
         if selected_exercise == "Exit":
             separate_line()
@@ -345,7 +344,7 @@ def adjust_exercise(users_log_info, exercise, users_log, users_row):
             users_log_info[selected_exercise] = new_value
             break
         else:
-            print("\nErr: Please enter a number.")
+            print(Col.RED + "\nErr: Please enter a number.")
 
     # Add to a variable the updated user log values in a Dictionary format.
     new_user_log = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
@@ -357,13 +356,13 @@ def adjust_exercise(users_log_info, exercise, users_log, users_row):
 
     # Message saying which exercise has been updated and the new value
     separate_line()
-    print(f"\n{selected_exercise} has been updated to: {new_value}\n")
+    print(Col.GREEN+f"{selected_exercise} has been updated to: {new_value}")
     separate_line()
 
     adjust_another = input("Would you like to adjust another?\n").title()
 
     while adjust_another not in ("Yes", "No"):
-        print("\nErr: Please enter Yes or No")
+        print(Col.RED + "\nErr: Please enter Yes or No")
         adjust_another = input("Would you like to adjust another?\n").title()
 
     if adjust_another == "Yes":
