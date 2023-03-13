@@ -185,7 +185,7 @@ def view_user_log(user):
     users_log = log_sheet.row_values(users_row)  # current users log
     exercise = log_sheet.row_values(1)  # list of the exercise headings
 
-    print(Col.GREEN + f"Workout Log for: {user}\n")
+    print("Workout Log for: " + Col.GREEN + f"{user}\n")
     # Create dictionary for exercise name and the users value
     user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
 
