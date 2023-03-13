@@ -83,6 +83,7 @@ def get_users_name():
                 # any spaces
                 titled_input = user_input.title()
                 USERS_NAME.append(titled_input)
+                print(Col.GREEN + "\nLooking for your profile...")
                 return titled_input
             else:
                 print(Col.RED + "Err: Please enter only letters.")
@@ -120,16 +121,30 @@ def validate_user(user):
     profiles_sheet = SHEET.worksheet('profiles')
     profiles_names = profiles_sheet.col_values(1)
     if user in profiles_names:
-        print(Col.GREEN + "\nLoading your profile...")
         separate_line()
         user_menu()
     else:
-        user_age = get_users_age()
-        profiles_sheet.append_row([user, user_age])
-        log_sheet.append_row([user] + [0]*14)
-        print(Col.GREEN + "\n>> New profile created <<")
-        separate_line()
-        user_menu()
+        # Question new profile
+        new_profile = input("\nDo you want to create a new profile?\n").title()
+        answer = yes_no_question(new_profile)
+
+        if answer == "Yes":
+            print(Col.BLUE + "\nCreating profile...\n")
+            # Ask user age
+            user_age = get_users_age()
+            print(Col.BLUE + "\nAdding your age...\n")
+            # Add profile to SHEETS
+            profiles_sheet.append_row([user, user_age])
+            log_sheet.append_row([user] + [0]*14)
+            print(Col.GREEN + "\n>> New profile created <<")
+            separate_line()
+
+            user_menu()
+
+        if answer == "No":
+            USERS_NAME.clear()
+            separate_line()
+            initial_question()
 
 
 def separate_line():
@@ -298,16 +313,13 @@ def adjust_log(user):
 
     # Ask if user would like to adjust another exercise
     adjust_log_question = input("Would you like to adjust your log?\n").title()
+    answer = yes_no_question(adjust_log_question)
 
-    while adjust_log_question not in ("Yes", "No"):
-        print(Col.RED + "\nErr: Please enter Yes or No")
-        adjust_log_question = input("Want to adjust your log?\n").title()
-
-    if adjust_log_question == "Yes":
+    if answer == "Yes":
         separate_line()
         adjust_exercise(users_log_info, exercise, users_log, users_row)
 
-    if adjust_log_question == "No":
+    if answer == "No":
         separate_line()
         user_menu()
 
@@ -359,20 +371,29 @@ def adjust_exercise(users_log_info, exercise, users_log, users_row):
     print(Col.GREEN+f"{selected_exercise} has been updated to: {new_value}")
     separate_line()
 
+    # Ask user if they would like to adjust another exercise
     adjust_another = input("Would you like to adjust another?\n").title()
+    answer = yes_no_question(adjust_another)
 
-    while adjust_another not in ("Yes", "No"):
-        print(Col.RED + "\nErr: Please enter Yes or No")
-        adjust_another = input("Would you like to adjust another?\n").title()
-
-    if adjust_another == "Yes":
+    if answer == "Yes":
         separate_line()
         view_user_log(user)
         adjust_exercise(users_log_info, exercise, users_log, users_row)
 
-    if adjust_another == "No":
+    if answer == "No":
         separate_line()
         user_menu()
+
+
+def yes_no_question(user_input):
+    """
+    returns a value of either Yes or No
+    """
+    while user_input not in ("Yes", "No"):
+        print(Col.RED + "Err: Please enter Yes or No")
+        user_input = input("").title()
+
+    return user_input
 
 
 USERS_NAME = []
