@@ -81,7 +81,7 @@ def get_users_name():
             if user_input.replace(" ", "").isalpha():
                 # Check that the input contains only letters after removing
                 # any spaces
-                titled_input = user_input.title()
+                titled_input = " ".join(name_list).title().rstrip()
                 USERS_NAME.append(titled_input)
                 print(Col.GREEN + "\nLooking for your profile...")
                 return titled_input
