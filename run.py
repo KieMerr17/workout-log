@@ -144,18 +144,18 @@ def separate_line():
 
 def user_menu():
     """
-    Question to the user once validated
+    Question to the user once validated.
     """
     print("What would you like to do?")
-    choices = "1) Workout\n2) View / Adjust Log\n3) Exit\n"
+    choices = "1) Workout\n2) View Your Log\n3) Exit\n"
     choice_selected = input(choices)
     separate_line()
 
     user = USERS_NAME
 
     # Check if input is 1, 2, or 3
-    while choice_selected not in ("1", "2", "3", "4"):
-        print("Err: Please enter option 1, 2, 3 or 4")
+    while choice_selected not in ("1", "2", "3"):
+        print("Err: Please enter option 1, 2 or 3")
         choice_selected = input(choices)
         separate_line()
 
@@ -166,7 +166,7 @@ def user_menu():
         generate_workout(time, user)
 
     if choice_selected == "2":
-        print("Lets first load your log...")
+        print("Loading your log...")
         separate_line()
         adjust_log(user)
 
@@ -296,6 +296,32 @@ def adjust_log(user):
     exercise = log_sheet.row_values(1)  # list of the exercise headings
 
     users_log_info = view_user_log(user)
+
+    # Ask if user would like to adjust another exercise
+    adjust_log_question = input("Would you like to adjust your log?\n").title()
+
+    while adjust_log_question not in ("Yes", "No"):
+        print("\nErr: Please enter Yes or No")
+        adjust_log_question = input("Want to adjust your log?\n").title()
+
+    if adjust_log_question == "Yes":
+        separate_line()
+        adjust_exercise(users_log_info, exercise, users_log, users_row)
+
+    if adjust_log_question == "No":
+        separate_line()
+        user_menu()
+
+
+def adjust_exercise(users_log_info, exercise, users_log, users_row):
+    """
+    Function to get adjustment for the new value of the exercise and post it to
+    Google Sheets.
+    Then questions user if they would like to adjust again, if not return to
+    user menu.
+    """
+    user = "".join(USERS_NAME)  # convert USER_NAME to a string
+
     selected_exercise = input("Which exercise shall we adjust?\n").title()
 
     # First check for exit
@@ -334,17 +360,18 @@ def adjust_log(user):
     print(f"\n{selected_exercise} has been updated to: {new_value}\n")
     separate_line()
 
-    # Ask if user would like to adjust another exercise
-    adjust_again = input("Would you like to adjust another?\n").title()
+    adjust_another = input("Would you like to adjust another?\n").title()
 
-    while adjust_again not in ("Yes", "No"):
+    while adjust_another not in ("Yes", "No"):
         print("\nErr: Please enter Yes or No")
-        adjust_again = input("Would you like to adjust another?\n").title()
+        adjust_another = input("Would you like to adjust another?\n").title()
 
-    if adjust_again == "Yes":
+    if adjust_another == "Yes":
         separate_line()
-        adjust_log(user)
-    if adjust_again == "No":
+        view_user_log(user)
+        adjust_exercise(users_log_info, exercise, users_log, users_row)
+
+    if adjust_another == "No":
         separate_line()
         user_menu()
 
