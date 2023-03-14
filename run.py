@@ -34,6 +34,7 @@ print(Col.YELLOW + "             |___/                         ")
 print("\n")
 
 # Google Sheet information used by more than one function
+profiles_sheet = SHEET.worksheet('profiles')
 log_sheet = SHEET.worksheet('log')
 
 
@@ -89,13 +90,14 @@ def get_users_name():
                 raise ValueError("Please enter only letters.")
 
             titled_input = " ".join(name_list).title().rstrip()
+            USERS_NAME.clear()
             USERS_NAME.append(titled_input)
-            print(Col.GREEN + "\nLooking for your profile...")
+            print(Col.GREEN + "\nLooking for your profile...\n")
             return titled_input
 
         # ValueError to raise
         except ValueError as err_msg:
-            print(Col.RED + "Err: " + str(err_msg))
+            print(Col.RED + "\nErr: " + str(err_msg))
 
 
 def get_users_age():
@@ -128,18 +130,21 @@ def get_users_email():
         try:
             # Get users email address input and remove whitespace
             user_input = input("Enter your email address: \n").replace(" ", "")
-            if not re.match(r"[^@]+@[^@]+\.[^@]+", user_input):
+            adj_input = user_input.capitalize()
+
+            if not re.match(r"[^@]+@[^@]+\.[^@]+", adj_input):
                 raise ValueError("Invalid email address entered.")
 
             confirm_email = input("Confirm email address: \n").replace(" ", "")
+            adj_confirm = confirm_email.capitalize()
 
             # Check confirmed email address matches the first without spaces
-            if user_input == confirm_email:
-                return confirm_email
+            if adj_input == adj_confirm:
+                return adj_confirm
             else:
                 raise ValueError("Email address didn't match.")
         except ValueError as err_msg:
-            print(Col.RED + f"\nErr: {str(err_msg)} Please try again.\n")
+            print(Col.RED + f"\nErr: {str(err_msg)}")
 
 
 def validate_user(user):
@@ -148,9 +153,7 @@ def validate_user(user):
     the spreadsheet.
     If NOT then it appends the name to the sheet.
     """
-    profiles_sheet = SHEET.worksheet('profiles')
     profiles_names = profiles_sheet.col_values(1)
-    user_email = profiles_sheet.col_values(2)
 
     # Check users name is stored or not
     if user in profiles_names:
@@ -158,47 +161,65 @@ def validate_user(user):
         find_user = profiles_sheet.find(user, in_column=1)
         users_row = find_user.row
         users_log = profiles_sheet.row_values(users_row)
-        stored_email = users_log[1]
+        stored_email = users_log[1:]
 
         # Ask to varify the user email before continue with login
         while True:
             try:
-                varify_email = input("\nVarify your email address..\n")
-                adj_input = varify_email.replace(" ", "")
+                varify_email = input("Varify your email address..\n")
+                adj_input = varify_email.replace(" ", "").capitalize()
 
                 # Varify email matches up with stored email
-                if adj_input in (stored_email, "Exit"):
+                if adj_input in (stored_email):
                     separate_line()
                     user_menu()
+
+                if adj_input == "Exit":
+                    separate_line()
+                    initial_question()
+
+                # Validate input
                 else:
-                    raise ValueError("Incorrect re-enter or 'Exit'")
+                    raise ValueError("Varify email or 'Exit'")
+
             except ValueError as err_msg:
                 print(Col.RED + "\nErr: " + str(err_msg))
     else:
-        # Question new profile
-        new_profile = input("\nDo you want to create a new profile?\n").title()
-        answer = yes_no_question(new_profile)
+        create_new_profile(user)
 
-        if answer == "Yes":
-            print(Col.BLUE + "\nCreating profile...\n")
-            # Ask user age
-            user_age = get_users_age()
-            print(Col.BLUE + "\nAdding your age...\n")
-            # Ask user email
-            user_email = get_users_email()
-            print(Col.BLUE + "\nAdding your email...\n")
-            # Add profile to SHEETS
-            profiles_sheet.append_row([user, user_email, user_age])
-            log_sheet.append_row([user] + [0]*14)
-            print(Col.GREEN + "\n>> New profile created <<")
-            separate_line()
 
-            user_menu()
+def create_new_profile(user):
+    """
+    Create a new profile using the input username given from the user
+    append it to Google SHEETS pages:
+    - Profiles
+    - Logs
+    """
+    # Question new profile
+    new_profile = input("Do you want to create a new profile?\n").title()
+    answer = yes_no_question(new_profile)
 
-        if answer == "No":
-            USERS_NAME.clear()
-            separate_line()
-            initial_question()
+    if answer == "Yes":
+        print(Col.BLUE + "\nCreating profile...\n")
+        # Ask user age
+        user_age = get_users_age()
+        print(Col.BLUE + "\nAdding your age...\n")
+        # Ask user email
+        user_email = get_users_email()
+        print(Col.BLUE + "\nAdding your email...\n")
+        # Add profile to SHEETS
+        profiles_sheet.append_row([user, user_email, user_age])
+        log_sheet.append_row([user] + [0]*14)
+        separate_line()
+        print(Col.GREEN + ">> New profile created <<")
+        separate_line()
+
+        user_menu()
+
+    if answer == "No":
+        USERS_NAME.clear()
+        separate_line()
+        initial_question()
 
 
 def separate_line():
@@ -457,4 +478,3 @@ def yes_no_question(user_input):
 
 USERS_NAME = []
 initial_question()
-get_users_email()
