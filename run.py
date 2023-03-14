@@ -280,6 +280,7 @@ def view_user_log(user):
     user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
 
     # Print Dictionary without '[]' to the terminal
+    print("Weight in: Kg\n")
     print('\n'.join([f"{key}: {value}" for key, value in user_data.items()]))
     separate_line()
     return user_data
