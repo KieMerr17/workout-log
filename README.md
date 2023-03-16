@@ -1,4 +1,4 @@
-# <img src="docs/workout-logo.jpg" style="width: 40px;height:40px;"> WORKOUT LOG 
+# <img src="docs/readme-image.jpg" style="width: 40px;height:40px;"> WORKOUT LOG 
 
 **Developer: Kieran Merrett**
 
