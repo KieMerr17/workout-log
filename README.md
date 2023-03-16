@@ -106,7 +106,7 @@ If yes, your log is regenerated for ease of viewing with all new values and prom
 Selecting option 3, 'Exit' the user quits the workout log and exits the terminal.
 
 2. ####  Workout
-Clicking the second option to Workout, you will be asked how long you want to workout for, 15, 25, 45 or 60 minutes. Depending on your selection being 1-4, a random workout is generated giving x4 'warm up' exercises and increasing by 2 for each workout length, 6-10 'Main workout' exercises.
+Clicking the second option to Workout, you will be asked how long you want to workout for, 15, 25, 45 or 60 minutes. Depending on your selection being 1-4, a random workout is generated giving x4 'warm up' exercises and increasing by 2 for each workout length, 4-10 'Main workout' exercises.
 
 AS you are not logged in or registered at this point, you are returned to the main menu.
 
@@ -145,7 +145,8 @@ Selecting option 3, 'Exit' the user quits the workout log and exits the terminal
 The following flowchart summarises the structure and logic of the application.
 
 <details><summary>Flowchart</summary>
-<img src="docs/flowchart.png>
+<img src="docs/flowchart.png">
+</details>
 
 ## Technologies Used
 
