@@ -187,7 +187,7 @@ def validate_user(user):
 
 def create_new_profile(user):
     """
-    Question to create a new profile using the input 
+    Question to create a new profile using the input
     and username given from the user
     append the given information to Google SHEETS pages:
     - Profiles
@@ -272,7 +272,7 @@ def view_user_log(user):
     exercise = log_sheet.row_values(1)  # list of the exercise headings
 
     print("Workout Log for: " + Col.GREEN + f"{user}\n")
-    
+
     # Create dictionary for exercise name and the users value
     user_data = {exercise[i]: users_log[i] for i in range(1, len(exercise))}
 
