@@ -69,7 +69,7 @@ Aimed towards people aged 16+ (recommended age for starting gym work outs), gene
 
 <details><summary>Click here to view instructions</summary>
 
-## Main Menu
+#### Main Menu
 On the main menu, users are presented with an ASCII art rendering of the name 'Workout Log'. Below the welcome graphic there are a couple of options for user to select from.
 Operation: Input a numeric value and press enter key.
 1. Login / Register
@@ -108,9 +108,9 @@ Selecting option 3, 'Exit' the user quits the workout log and exits the terminal
 2. ####  Workout
 Clicking the second option to Workout, you will be asked how long you want to workout for, 15, 25, 45 or 60 minutes. Depending on your selection being 1-4, a random workout is generated giving x4 'warm up' exercises and increasing by 2 for each workout length, 4-10 'Main workout' exercises.
 
-AS you are not logged in or registered at this point, you are returned to the main menu.
+As you are NOT logged in or registered at this point, you are returned to the main menu.
 
-#### Exit
+3. #### Exit
 Selecting option 3, 'Exit' the user quits the workout log and exits the terminal.
 
 </details>
@@ -223,11 +223,11 @@ The following flowchart summarises the structure and logic of the application.
 [PEP8 Validation Service](https://pep8ci.herokuapp.com/) was used to varify python code requirements. All the code passes with no errors and no warnings to show.
 
 <details><summary>PEP8 check for run.py</summary>
-<img src="docs/">
+<img src="docs/validation/run-py-PEP8-validation.png">
 </details>
 
 <details><summary>PEP8 check for colors.py</summary>
-<img src="docs/">
+<img src="docs/validation/colors-py-PEP8-validation.png">
 </details>
 
 ## Testing
