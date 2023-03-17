@@ -501,8 +501,74 @@ The testing approach is as follows:
 ### Heroku
 This application has been deployed from GitHub to Heroku by following the steps:
 
-1. 
-2. 
+<details><summary>Steps</summary>
+<br>
+First Enter the following into Github Terminal to get the requirements for heroku.
+'pip3 freeze > requirements.txt'
+<img src="docs/deployment/heroku-deployment-git-1.png">
+<br>
+Once you have your requirements generated, save and push the changes to github.
+<img src="docs/deployment/heroku-deployment-git-2.png">
+<br>
+Go to Heroku and Sign up or Login
+<img src="docs/deployment/heroku-deployment-1.png">
+<br>
+
+<img src="docs/deployment/heroku-deployment-2.png">
+<img src="docs/deployment/heroku-deployment-3.png">
+<br>
+On the right click new and create new app
+<img src="docs/deployment/heroku-deployment-4.png">
+<br>
+Enter an app name and select your area then click create
+<img src="docs/deployment/heroku-deployment-5.png">
+<br>
+First go to the settings tab
+<img src="docs/deployment/heroku-deployment-6.png">
+<br>
+Click reveal config vars
+<img src="docs/deployment/heroku-deployment-7.png">
+<br>
+In this box type 'CREDS'
+<img src="docs/deployment/heroku-deployment-8.png">
+<br>
+Head over to your project and to the creds.json file, copy its contents over to the value box.
+<img src="docs/deployment/heroku-deployment-9.png">
+<br>
+Copy into the value box and click 'add'
+<img src="docs/deployment/heroku-deployment-10.png">
+<img src="docs/deployment/heroku-deployment-11.png">
+<img src="docs/deployment/heroku-deployment-12.png">
+<br>
+Add the buildpacks in the correct order with Python first and Nodejs 2nd
+<img src="docs/deployment/heroku-deployment-13.png">
+<img src="docs/deployment/heroku-deployment-14.png">
+<img src="docs/deployment/heroku-deployment-15.png">
+<br>
+Head back over to the deploy tab
+<img src="docs/deployment/heroku-deployment-16.png">
+<br>
+Connect to your Github Account and search your project name
+<img src="docs/deployment/heroku-deployment-17.png">
+<br>
+Click 'connect' to link your project
+<img src="docs/deployment/heroku-deployment-18.png">
+<img src="docs/deployment/heroku-deployment-19.png">
+<br>
+First select which branch you wish to deploy, then either auto deploy or manual. 
+Auto means each time you push changes Heroku will automatically update the app.
+Manual means YOU have to update yourself
+<img src="docs/deployment/heroku-deployment-20.png">
+<img src="docs/deployment/heroku-deployment-21.png">
+<br>
+Your app is being built
+<img src="docs/deployment/heroku-deployment-22.png">
+<br>
+Click to view completed app
+<img src="docs/deployment/heroku-deployment-23.png">
+<img src="docs/deployment/heroku-deployment-24.png">
+</details>
+<br>
 
 
 ### Forking the GitHub Repository
