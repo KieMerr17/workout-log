@@ -355,31 +355,48 @@ The testing approach is as follows:
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Login / Register | Input my first and last name and worked through the following questions | A profile not to be under my name so asked to create new profile. Worked through the questions following and a new profile created. Arrive at the user menu | worked as expected |
+| Login / Register | Input my first and last name | A profile under my name to be found and asked to confirm the email registered before continuing to the user menu | worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Register</summary>
+<img src="docs/testing/user-story-4-a-1.png">
+<img src="docs/testing/user-story-4-a-2.png">
+<img src="docs/testing/user-story-4-a-3.png">
 </details>
+<details><summary>Login</summary>
+<img src="docs/testing/user-story-4-b-1.png">
+<img src="docs/testing/user-story-4-b-2.png">
+</details>
+<br>
 
 5. I want to be able to view my weights log
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| View Log | Once passing login'register, select option 2 from the user menu to view user log | Log to be displayed and to reference the users name to show this log is specific to this user | worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Screenshot</summary>
+<img src="docs/testing/user-story-5-a-1.png">
+<img src="docs/testing/user-story-5-a-2.png">
+<img src="docs/testing/user-story-5-a-3.png">
 </details>
+<br>
 
 6. I want to be able to adjust my workout log weight value stored
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Adjust log | Once passing login'register, select option 2 from the user menu to view user log, then answer yes to the adjust log question, enter the name of the exercise i wish to adjust then its new value. Then i answered yes to the adjust again question to view updated log  | Input of exercise name to be matched and its new value to be updated, giving confirmation of exercise and new value. Updating when full log request next viewed |  |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Screenshot</summary>
+<img src="docs/testing/user-story-6-a-1.png">
+<img src="docs/testing/user-story-6-a-2.png">
+<img src="docs/testing/user-story-6-a-3.png">
+<img src="docs/testing/user-story-6-a-4.png">
+<img src="docs/testing/user-story-6-a-5.png">
+<img src="docs/testing/user-story-6-a-6.png">
 </details>
+<br>
 
 7. I want users to have a positive experience whilst using the log
 
