@@ -342,11 +342,14 @@ The testing approach is as follows:
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Workout | repeating the process of selecting a 15 minute workout three times | Each workout to be different to the last in both 'warm up' and 'main workout' exercises | worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Screenshot</summary>
+<img src="docs/testing/user-story-3-a.png">
+<img src="docs/testing/user-story-3-b.png">
+<img src="docs/testing/user-story-3-c.png">
 </details>
+<br>
 
 4. I want to be able to sign up/ login
 
