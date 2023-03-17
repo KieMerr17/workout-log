@@ -1,4 +1,4 @@
-# <img src="docs/readme-image.jpg" style="width: 40px;height:40px;"> WORKOUT LOG 
+# <img src="docs/images/readme-image.png" style="width: 50px;height:50px;"> WORKOUT LOG 
 
 **Developer: Kieran Merrett**
 
@@ -190,7 +190,6 @@ The following flowchart summarises the structure and logic of the application.
 <summary>Main Menu</summary>
 <img src="docs/features/main-menu.png">
 </details>
-<br>
 
 ### Workout
 - Generate a workout for the user
@@ -206,7 +205,6 @@ The following flowchart summarises the structure and logic of the application.
 <summary>Workout - User Menu</summary>
 <img src="docs/features/user-workout.png">
 </details>
-<br>
 
 ### Exit
 - Gives the user the option to exit the workout log completely
@@ -221,7 +219,6 @@ The following flowchart summarises the structure and logic of the application.
 <summary>Exit - User Menu</summary>
 <img src="docs/features/user-exit.png">
 </details>
-<br>
 
 ### Login / Register
 - This gives the user the chance to sign up or log into their personal workout log
@@ -236,7 +233,6 @@ The following flowchart summarises the structure and logic of the application.
 <summary>Login</summary>
 <img src="docs/features/user-login.png">
 </details>
-<br>
 
 ### User Menu
 - Once signed up or logged in, this menu is where the user can decide to view their log, generate a workout or exit
@@ -246,7 +242,6 @@ The following flowchart summarises the structure and logic of the application.
 <summary>User Menu</summary>
 <img src="docs/features/user-menu.png">
 </details>
-<br>
 
 ### View Log
 - Here the user can view the currently stored information for their profile
@@ -256,7 +251,6 @@ The following flowchart summarises the structure and logic of the application.
 <summary>User Log</summary>
 <img src="docs/features/user-log.png">
 </details>
-<br>
 
 ### Adjust Log
 - Here the usere is given the chance to adjust their current log information for a specific exercise
@@ -266,7 +260,6 @@ The following flowchart summarises the structure and logic of the application.
 <summary>Adjust Log</summary>
 <img src="docs/features/adjust-log.png">
 </details>
-<br>
 
 ### Error Handling
 - Upon incorrect information input across the workout log, value errors and input errors are raised if necessary and feedback given towards the correct input required.
@@ -280,7 +273,6 @@ The following flowchart summarises the structure and logic of the application.
 <summary>Yes/No Error</summary>
 <img src="docs/features/yes-no-error.png">
 </details>
-<br>
 
 [Back to Table Of Contents](#table-of-contents)
 <br>
@@ -296,7 +288,6 @@ The following flowchart summarises the structure and logic of the application.
 <details><summary>PEP8 check for colors.py</summary>
 <img src="docs/validation/colors-py-PEP8-validation.png">
 </details>
-<br>
 
 ## Testing
 
@@ -314,7 +305,6 @@ The testing approach is as follows:
 <details><summary>Screenshot</summary>
 <img src="docs/testing/user-story-1.png">
 </details>
-<br>
 
 
 2. I want to be able to generate a workout quickly
@@ -335,7 +325,6 @@ The testing approach is as follows:
 <img src="docs/testing/user-story-2-b-3.png">
 <img src="docs/testing/user-story-2-b-4.png">
 </details>
-<br>
 
 
 3. I want to have different workouts each time
@@ -349,7 +338,6 @@ The testing approach is as follows:
 <img src="docs/testing/user-story-3-b.png">
 <img src="docs/testing/user-story-3-c.png">
 </details>
-<br>
 
 4. I want to be able to sign up/ login
 
@@ -367,7 +355,6 @@ The testing approach is as follows:
 <img src="docs/testing/user-story-4-b-1.png">
 <img src="docs/testing/user-story-4-b-2.png">
 </details>
-<br>
 
 5. I want to be able to view my weights log
 
@@ -380,7 +367,6 @@ The testing approach is as follows:
 <img src="docs/testing/user-story-5-a-2.png">
 <img src="docs/testing/user-story-5-a-3.png">
 </details>
-<br>
 
 6. I want to be able to adjust my workout log weight value stored
 
@@ -396,7 +382,6 @@ The testing approach is as follows:
 <img src="docs/testing/user-story-6-a-5.png">
 <img src="docs/testing/user-story-6-a-6.png">
 </details>
-<br>
 
 7. I want users to have a positive experience whilst using the log
 
@@ -409,7 +394,6 @@ The testing approach is as follows:
 <img src="docs/testing/user-story-7-a-2.png">
 <img src="docs/testing/user-story-7-a-3.png">
 </details>
-<br>
 
 8. I want users to select options from the menus easily
 
@@ -435,7 +419,6 @@ The testing approach is as follows:
 <img src="docs/testing/user-story-9-a-3.png">
 <img src="docs/testing/user-story-9-a-4.png">
 </details>
-<br>
 
 10. I want the user to get feedback on an incorrect input
 
@@ -450,7 +433,6 @@ The testing approach is as follows:
 <img src="docs/testing/user-story-10-a-4.png">
 <img src="docs/testing/user-story-10-a-5.png">
 </details>
-<br>
 
 11. I want data entry to be validated
 
@@ -466,7 +448,6 @@ The testing approach is as follows:
 <details><summary>Adjust Log</summary>
 <img src="docs/testing/user-story-11-b-1.png">
 </details>
-<br>
 
 12. I want the users to have an option to Exit the log
 
@@ -483,7 +464,6 @@ The testing approach is as follows:
 <img src="docs/testing/user-story-12-b-1.png">
 <img src="docs/testing/user-story-12-b-2.png"> 
 </details>
-<br>
 
 [Back to Table Of Contents](#table-of-contents)
 
@@ -568,7 +548,6 @@ Click to view completed app
 <img src="docs/deployment/heroku-deployment-23.png">
 <img src="docs/deployment/heroku-deployment-24.png">
 </details>
-<br>
 
 
 ### Forking the GitHub Repository
@@ -590,7 +569,7 @@ Click to view completed app
 ## Credits
 
 ### Images
-- [Flaticon](https://www.flaticon.com/free-icon/connect_1707222) was used for the website favicon
+- [Flaticon](https://www.flaticon.com/free-icon/schedule_7118239?term=workout&page=1&position=76&origin=search&related_id=7118239) was used for the website favicon
 
 ### Code
 - Code Institute - for git template IDE and "Love Sandwiches - Essentials Project" which helped me with connecting the Google Spreadsheet to my project.
