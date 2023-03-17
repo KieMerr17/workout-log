@@ -296,38 +296,51 @@ The following flowchart summarises the structure and logic of the application.
 <details><summary>PEP8 check for colors.py</summary>
 <img src="docs/validation/colors-py-PEP8-validation.png">
 </details>
+<br>
 
 ## Testing
 
 The testing approach is as follows:
 1. Manual testing of user stories
 
-### Manual Testing
-<details><summary></summary>
+### Manual Testing:
 
 1. I want to have clear options to select in the main menu
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Main Menu | Load up the Program | Main menu to load up without any issues and display the workout log logo | Worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Screenshot</summary>
+<img src="docs/testing/user-story-1.png">
 </details>
+<br>
+
 
 2. I want to be able to generate a workout quickly
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Workout | Select option 2 from the main menu, select a length of time to workout | Workout to be generated giving a different amount of workouts depending on time selected |  |
+| User Menu | Select option 1 from the user menu, select a length of time to workout | Workout to be generated, attaching the users name and giving a different amount of workouts depending on time selected |  |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Main Menu Workout</summary>
+<img src="docs/testing/user-story-2-a-1.png">
+<img src="docs/testing/user-story-2-a-2.png">
+<img src="docs/testing/user-story-2-a-3.png">
 </details>
+<details><summary>User Menu Workout</summary>
+<img src="docs/testing/user-story-2-b-1.png">
+<img src="docs/testing/user-story-2-b-2.png">
+<img src="docs/testing/user-story-2-b-3.png">
+<img src="docs/testing/user-story-2-b-4.png">
+</details>
+<br>
+
 
 3. I want to have different workouts each time
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
 |  |  |  |  |
 
@@ -337,7 +350,7 @@ The testing approach is as follows:
 
 4. I want to be able to sign up/ login
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
 |  |  |  |  |
 
@@ -347,7 +360,7 @@ The testing approach is as follows:
 
 5. I want to be able to view my weights log
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
 |  |  |  |  |
 
@@ -357,7 +370,7 @@ The testing approach is as follows:
 
 6. I want to be able to adjust my workout log weight value stored
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
 |  |  |  |  |
 
@@ -367,7 +380,7 @@ The testing approach is as follows:
 
 7. I want users to have a positive experience whilst using the log
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
 |  |  |  |  |
 
@@ -377,7 +390,7 @@ The testing approach is as follows:
 
 8. I want users to select options from the menus easily
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
 |  |  |  |  |
 
@@ -387,7 +400,7 @@ The testing approach is as follows:
 
 9. I want user names and emails to be stored on Google Sheets
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
 |  |  |  |  |
 
@@ -397,7 +410,7 @@ The testing approach is as follows:
 
 10. I want the user to get feedback on an incorrect input
 
-| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
 |  |  |  |  |
 
@@ -406,6 +419,16 @@ The testing approach is as follows:
 </details>
 
 11. I want data entry to be validated
+
+| **Feature** | **Action** | **Expected Result**| **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+12. I want the users to have an option to Exit the log
 
 | **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
