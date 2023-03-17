@@ -321,8 +321,8 @@ The testing approach is as follows:
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-| Workout | Select option 2 from the main menu, select a length of time to workout | Workout to be generated giving a different amount of workouts depending on time selected |  |
-| User Menu | Select option 1 from the user menu, select a length of time to workout | Workout to be generated, attaching the users name and giving a different amount of workouts depending on time selected |  |
+| Workout | Select option 2 from the main menu, select a length of time to workout | Workout to be generated giving a different amount of workouts depending on time selected | worked as expected |
+| User Menu | Select option 1 from the user menu, select a length of time to workout | Workout to be generated, attaching the users name and giving a different amount of workouts depending on time selected | worked as expected |
 
 <details><summary>Main Menu Workout</summary>
 <img src="docs/testing/user-story-2-a-1.png">
@@ -386,7 +386,7 @@ The testing approach is as follows:
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-| Adjust log | Once passing login'register, select option 2 from the user menu to view user log, then answer yes to the adjust log question, enter the name of the exercise i wish to adjust then its new value. Then i answered yes to the adjust again question to view updated log  | Input of exercise name to be matched and its new value to be updated, giving confirmation of exercise and new value. Updating when full log request next viewed |  |
+| Adjust log | Once passing login'register, select option 2 from the user menu to view user log, then answer yes to the adjust log question, enter the name of the exercise i wish to adjust then its new value. Then i answered yes to the adjust again question to view updated log  | Input of exercise name to be matched and its new value to be updated, giving confirmation of exercise and new value. Updating when full log request next viewed | worked as expected |
 
 <details><summary>Screenshot</summary>
 <img src="docs/testing/user-story-6-a-1.png">
