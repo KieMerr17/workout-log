@@ -402,20 +402,25 @@ The testing approach is as follows:
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Across all screens | Simple navigation through each menu | responses to input to be given without issues | worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Screenshot</summary>
+<img src="docs/testing/user-story-7-a-1.png">
+<img src="docs/testing/user-story-7-a-2.png">
+<img src="docs/testing/user-story-7-a-3.png">
 </details>
+<br>
 
 8. I want users to select options from the menus easily
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Main Menu | Load up the main program and select an option | Be presented with a choice of options and an easy way to identify your choice | worked as expected |
+| User Menu | Log into the main program and progress through to the user menu | Be presented with a choice of options and an easy way to identify your choice | worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Screenshot</summary>
+<img src="docs/testing/user-story-8-a.png">
+<img src="docs/testing/user-story-8-b.png">
 </details>
 
 9. I want user names and emails to be stored on Google Sheets
