@@ -491,7 +491,10 @@ The testing approach is as follows:
 
 | **Bug** | **Fix** |
 | ------- | ------- |
-|  |  |
+| PEP8 validation issue linked to ASCII image '\' errors | add 'r' prefix for string literals before the string so it isnt interpreting '\' as an escape. |
+| whitespace being allowed in the email input bar | adjust input bar to remove any whitespace found. Swap (" " for "")  |
+| White space before inputting user name generating a new profile to be created | Adjust so the titled_input is a make up of white space being joined to the use input and using .rstrip() remove any trailing whitespace also |
+| Mixture of upper and lower letters when inputting users names, causing the system to create new profile | Adjust so the input uses .title() when submitting information to ensure just the first letter is uppercase |
 
 ## Deployment
 
