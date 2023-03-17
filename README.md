@@ -427,41 +427,63 @@ The testing approach is as follows:
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Login / Register | Sign up to the program and progress through the menus as a new user | profile to be created and my information to be stored when logging in next time | worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Screenshot</summary>
+<img src="docs/testing/user-story-9-a-1.png">
+<img src="docs/testing/user-story-9-a-2.png">
+<img src="docs/testing/user-story-9-a-3.png">
+<img src="docs/testing/user-story-9-a-4.png">
 </details>
+<br>
 
 10. I want the user to get feedback on an incorrect input
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| across all inputs | enter incorrect information which could potentialy be accepted or throw an error | Value error to be raised and asked again for your input | worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Screenshot</summary>
+<img src="docs/testing/user-story-10-a-1.png">
+<img src="docs/testing/user-story-10-a-2.png">
+<img src="docs/testing/user-story-10-a-3.png">
+<img src="docs/testing/user-story-10-a-4.png">
+<img src="docs/testing/user-story-10-a-5.png">
 </details>
+<br>
 
 11. I want data entry to be validated
 
 | **Feature** | **Action** | **Expected Result**| **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Login/regster | Attempt to sign in using a mixture of uppercase and lower case letters combined | Profile to be found and not asked to sign up to a new one | worked as expected |
+| Adjust log | Attempt to adjust log using letters and numbers | Value error to be thrown and asked to input just numbers only | worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Login/register</summary>
+<img src="docs/testing/user-story-11-a-1.png">
+<img src="docs/testing/user-story-11-a-2.png">
 </details>
+<details><summary>Adjust Log</summary>
+<img src="docs/testing/user-story-11-b-1.png">
+</details>
+<br>
 
 12. I want the users to have an option to Exit the log
 
 | **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
-|  |  |  |  |
+| Main menu | From the main menu, select option 3 | expect the program to provide message giving feedback before exiting the program. No more further inputs affect the program | worked as expected |
+| User menu | From the User menu, select option 3 | expect the program to provide message giving feedback before exiting the program. No more further inputs affect the program | worked as expected |
 
-<details><summary></summary>
-<img src="docs/">
+<details><summary>Main Menu</summary>
+<img src="docs/testing/user-story-12-a-1.png">
+<img src="docs/testing/user-story-12-a-2.png">
 </details>
+<details><summary>User Menu</summary>
+<img src="docs/testing/user-story-12-b-1.png">
+<img src="docs/testing/user-story-12-b-2.png">
+</details>
+<br>
 
 [Back to Table Of Contents](#table-of-contents)
 
