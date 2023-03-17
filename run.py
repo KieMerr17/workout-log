@@ -1,3 +1,7 @@
+"""
+Import python 'Random Expression Library
+for use in validating email address input
+"""
 import re
 import random
 import gspread

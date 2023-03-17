@@ -169,7 +169,7 @@ The following flowchart summarises the structure and logic of the application.
 
 #### Python Libraries
 - random - used to randomise the workout when generating
-- [unittest](https://docs.python.org/3/library/unittest.html) - used to carry out testing on single units in validation.py file
+- re - used for random expression validation when getting user email address
 
 #### Third Party Libraries
 - [colorama](https://pypi.org/project/colorama/) - JUSTIFICATION: I used this to add color to the terminal. I marked warning/error information with color red and user feedback with blue and green.
@@ -481,7 +481,7 @@ The testing approach is as follows:
 </details>
 <details><summary>User Menu</summary>
 <img src="docs/testing/user-story-12-b-1.png">
-<img src="docs/testing/user-story-12-b-2.png">
+<img src="docs/testing/user-story-12-b-2.png"> 
 </details>
 <br>
 
