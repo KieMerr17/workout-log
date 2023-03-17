@@ -569,7 +569,7 @@ Click to view completed app
 ## Credits
 
 ### Images
-- [Flaticon](https://www.flaticon.com/free-icon/schedule_7118239?term=workout&page=1&position=76&origin=search&related_id=7118239) was used for the website favicon
+- [Flaticon](https://www.flaticon.com/free-icon/schedule_7118239) was used for the website favicon
 
 ### Code
 - Code Institute - for git template IDE and "Love Sandwiches - Essentials Project" which helped me with connecting the Google Spreadsheet to my project.
