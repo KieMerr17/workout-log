@@ -135,6 +135,7 @@ Selecting option 3, 'Exit' the user quits the workout log and exits the terminal
 9. I want user names and emails to be stored on Google Sheets
 10. I want the user to get feedback on an incorrect input
 11. I want data entry to be validated
+12. I want the users to have an option to Exit the log
 
 [Back to Table Of Contents](#table-of-contents)
 
@@ -181,42 +182,108 @@ The following flowchart summarises the structure and logic of the application.
 
 ### Main menu
 
-- 
-- 
-- 
+- Provides user with graphic welcome message
+- Gives user option to workout or signin / register
+- User stories covered: 1, 2, 4, 8, 12
  
 <details>
-    <summary></summary>
-
-![](docs/)
+<summary>Main Menu</summary>
+<img src="docs/features/main-menu.png">
 </details>
+<br>
 
-### 
-- 
-- 
-- 
+### Workout
+- Generate a workout for the user
+- Workout suited to time specified
+- Give variety in the workout
+- User stories covered: 2, 3, 7
   
 <details>
-    <summary></summary>
-
-![](docs/)
+<summary>Workout - Main Menu</summary>
+<img src="docs/features/main-workout.png">
 </details>
+<details>
+<summary>Workout - User Menu</summary>
+<img src="docs/features/user-workout.png">
+</details>
+<br>
 
-### 
-- 
-- 
+### Exit
+- Gives the user the option to exit the workout log completely
+- Appearing in both the main menu and the user menu
+- User stories covered: 7, 12
 
 <details>
-    <summary></summary>
-
-![](docs/)
+<summary>Exit - Main Menu</summary>
+<img src="docs/features/main-exit.png">
 </details>
+<details>
+<summary>Exit - User Menu</summary>
+<img src="docs/features/user-exit.png">
+</details>
+<br>
 
-### 
-- 
-- 
+### Login / Register
+- This gives the user the chance to sign up or log into their personal workout log
+- Their data is stored and validated with Google Sheets
+- User stories covered: 9, 11
+
+<details>
+<summary>Sign up</summary>
+<img src="docs/features/user-signup.png">
+</details>
+<details>
+<summary>Login</summary>
+<img src="docs/features/user-login.png">
+</details>
+<br>
+
+### User Menu
+- Once signed up or logged in, this menu is where the user can decide to view their log, generate a workout or exit
+- User stories covered: 1, 2, 5, 8, 12
+
+<details>
+<summary>User Menu</summary>
+<img src="docs/features/user-menu.png">
+</details>
+<br>
+
+### View Log
+- Here the user can view the currently stored information for their profile
+- User stories covered: 5
+
+<details>
+<summary>User Log</summary>
+<img src="docs/features/user-log.png">
+</details>
+<br>
+
+### Adjust Log
+- Here the usere is given the chance to adjust their current log information for a specific exercise
+- User stories covered: 6, 7, 11
+
+<details>
+<summary>Adjust Log</summary>
+<img src="docs/features/adjust-log.png">
+</details>
+<br>
+
+### Error Handling
+- Upon incorrect information input across the workout log, value errors and input errors are raised if necessary and feedback given towards the correct input required.
+- User stories covered: 10, 11
+
+<details>
+<summary>Input Error</summary>
+<img src="docs/features/input-error.png">
+</details>
+<details>
+<summary>Yes/No Error</summary>
+<img src="docs/features/yes-no-error.png">
+</details>
+<br>
 
 [Back to Table Of Contents](#table-of-contents)
+<br>
 
 ## Validation
 
@@ -238,7 +305,7 @@ The testing approach is as follows:
 ### Manual Testing
 <details><summary></summary>
 
-1. 
+1. I want to have clear options to select in the main menu
 
 | **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
@@ -248,7 +315,97 @@ The testing approach is as follows:
 <img src="docs/">
 </details>
 
-2. 
+2. I want to be able to generate a workout quickly
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+3. I want to have different workouts each time
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+4. I want to be able to sign up/ login
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+5. I want to be able to view my weights log
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+6. I want to be able to adjust my workout log weight value stored
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+7. I want users to have a positive experience whilst using the log
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+8. I want users to select options from the menus easily
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+9. I want user names and emails to be stored on Google Sheets
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+10. I want the user to get feedback on an incorrect input
+
+| **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
+| ------------- | ----------------------------- | ---------------------------- | ----------------- |
+|  |  |  |  |
+
+<details><summary></summary>
+<img src="docs/">
+</details>
+
+11. I want data entry to be validated
 
 | **Feature**   | **Action**                    | **Expected Result**          | **Actual Result** |
 | ------------- | ----------------------------- | ---------------------------- | ----------------- |
