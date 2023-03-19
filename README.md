@@ -573,7 +573,6 @@ Click to view completed app
 
 ### Code
 - Code Institute - for git template IDE and "Love Sandwiches - Essentials Project" which helped me with connecting the Google Spreadsheet to my project.
-- [ASCII Art Generator]() was used to create game title
 - [gspread documentation](https://docs.gspread.org/en/latest/user-guide.html) explained how to obtain a specific value from the google spreadsheet
 - Instructions how to print colored text from [this]()
 
