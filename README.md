@@ -569,12 +569,12 @@ Click to view completed app
 ## Credits
 
 ### Images
-- [Flaticon](https://www.flaticon.com/free-icon/schedule_7118239) was used for the website favicon
+- [Flaticon](https://cdn-icons-png.flaticon.com/512/7118/7118239.png) was used for the website favicon
 
 ### Code
 - Code Institute - for git template IDE and "Love Sandwiches - Essentials Project" which helped me with connecting the Google Spreadsheet to my project.
 - [gspread documentation](https://docs.gspread.org/en/latest/user-guide.html) explained how to obtain a specific value from the google spreadsheet
-- Instructions how to print colored text from [this]()
+- Instructions how to print colored text from [here](https://www.pythonpool.com/python-colorama/)
 
 ## Acknowledgements
 I would like to thank everyone who supported me in the development of this project:
