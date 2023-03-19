@@ -10,7 +10,7 @@
 
 This is a command-line version of a workout log and workout generator.
 
-The aim is to build a place for a user to store weight logs to use when working out and be able to generate a workout for the user depending on how long the have available. Workouts are random each time dependant on time.
+The aim is to build a place for a user to store weight logs to use when working out and be able to generate a workout for the user depending on how long they have available. Workouts are random each time and vary in length depending on time.
 
 ## Table of Contents
   - [Project Goals](#project-goals)
@@ -44,14 +44,15 @@ The aim is to build a place for a user to store weight logs to use when working 
 
 - Generate a random workout for a user dependant on time
 - Be able to log in/ register a new account.
-- Log and update weights weights acheived in a previous workouts
+- Log and update weights acheived in a previous workouts
 
 
 ### Site Owner Goals
 
-- Create a log that is easy and clear to the user
+- Create a log that is easy to use and clear to the user
 - Ensure that users understand the purpose of the log
-- Generate a workout each time that is always new for the users.
+- Generate workouts which always vary in exercises/reps
+
 ## User Experience
 
 ### Target Audience
@@ -61,7 +62,7 @@ Aimed towards people aged 16+ (recommended age for starting gym work outs), gene
 ### User Requirements and Expectations
 
 - A simple, error-free workout creation tool
-- Straightforward navigation
+- Straight-forward navigation
 - Log personalisation once registered
 - Adjustable log record
 
@@ -162,7 +163,7 @@ The following flowchart summarises the structure and logic of the application.
 - [Google Cloud Platform](https://cloud.google.com/cloud-console/) was used to manage access and permissions for Google Services such as Google auth, sheets etc.
 - [Google Sheets](https://www.google.co.uk/sheets/about/) was used to store user details, user log and exercises for user
 - [PEP8](https://pep8ci.herokuapp.com/) used to validate my python code
-- [Heroku](https://https://heroku.com/) was used to deploy the project into live environment
+- [Heroku](https://www.heroku.com/) was used to deploy the project into live environment
 - [Gitpod Workspace](https://gitpod.io/workspaces) used to write the project code using Code Institute template
 
 ### Libraries
@@ -174,7 +175,7 @@ The following flowchart summarises the structure and logic of the application.
 #### Third Party Libraries
 - [colorama](https://pypi.org/project/colorama/) - JUSTIFICATION: I used this to add color to the terminal. I marked warning/error information with color red and user feedback with blue and green.
 - [gspread](https://docs.gspread.org/en/latest/) - JUSTIFICATION: I used gspread to add and manipulate data in my Google spreadsheet and to interact with Google API.
-- [google.oauth2.service_account](https://google-auth.readthedocs.io/en/master/) - JUSTIFICATION: module used to set up the authentification needed to access the Google API and connect my Service Account with the Credentials function. A creds.json file is created with all details the API needs to access the google account. In deployment to Render this information is stored in the config var section.
+- [google.oauth2.service_account](https://google-auth.readthedocs.io/en/master/) - JUSTIFICATION: module used to set up the authentification needed to access the Google API and connect my Service Account with the Credentials function. A creds.json file is created with all details the API needs to access the google account. In deployment to Heroku this information is stored in the config var section.
 
 [Back to Table Of Contents](#table-of-contents)
 
@@ -474,7 +475,7 @@ The testing approach is as follows:
 | PEP8 validation issue linked to ASCII image '\' errors | add 'r' prefix for string literals before the string so it isnt interpreting '\' as an escape. |
 | whitespace being allowed in the email input bar | adjust input bar to remove any whitespace found. Swap (" " for "")  |
 | White space before inputting user name generating a new profile to be created | Adjust so the titled_input is a make up of white space being joined to the use input and using .rstrip() remove any trailing whitespace also |
-| Mixture of upper and lower letters when inputting users names, causing the system to create new profile | Adjust so the input uses .title() when submitting information to ensure just the first letter is uppercase |
+| Mixture of upper and lower letters when inputting users names, causing the system to create new profile | Adjust so the input uses .title() when submitting information to ensure ONLY the first letter is uppercase |
 
 ## Deployment
 
